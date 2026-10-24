@@ -93,6 +93,8 @@ main{position:relative}
 section{position:relative;pointer-events:none}
 .face{padding:var(--s6) 0;scroll-margin-top:40px}
 .face:first-of-type{padding-top:120px}
+/* room for the cube to move to centre after the last section has scrolled away */
+.face:has(+ .outro){padding-bottom:60vh}
 .col{position:relative;z-index:3;pointer-events:auto;width:min(580px,47vw);margin-left:var(--gut);display:flex;flex-direction:column;gap:var(--s4)}
 
 /* section header, same everywhere */
@@ -312,12 +314,12 @@ section{position:relative;pointer-events:none}
     <div class="glass rv">
       <div class="about">
         <figure class="ph"><img src="img/drums.jpg" alt="Kabir playing drums on stage" style="object-position:50% 42%" loading="lazy"></figure>
-        <p class="bio" data-draft>I’m a senior at Woodstock School, a boarding school in the Himalayas. I like building software that helps people understand things, especially in the languages they actually speak.</p>
+        <p class="bio" data-draft>Senior at Woodstock School in the Himalayas. I build software that explains things in the languages people actually speak.</p>
       </div>
       <dl class="spec">
-        <dt>From</dt><dd>Born in San Francisco · home in Gurgaon, India</dd>
-        <dt>Speaks</dt><dd>English, Hindi, Spanish, some Indonesian</dd>
-        <dt>Interests</dt><dd>Speedcubing: 12-second 3x3 PB (hence the cube) · basketball (I’m 6′4″) · drums in the school band, Grade 3</dd>
+        <dt>From</dt><dd>San Francisco · Gurgaon</dd>
+        <dt>Speaks</dt><dd>English, Hindi, Spanish</dd>
+        <dt>Interests</dt><dd>12-second 3x3 PB · basketball (6′4″) · drums</dd>
       </dl>
     </div>
   </div>
@@ -334,7 +336,7 @@ section{position:relative;pointer-events:none}
         <div><h3>MediTrack</h3><div class="role">Founder &amp; developer</div></div>
         <span class="when">2025 – now</span>
       </div>
-      <p class="one">Your lab report, explained in your language: by phone call, WhatsApp or web, in Hindi, English, Marathi, Gujarati, Malayalam or Hinglish.</p>
+      <p class="one">Lab reports explained by phone call, WhatsApp or web, in 5 Indian languages and Hinglish.</p>
       <figure class="shot tall"><img src="img/meditrack-call-whatsapp.jpg" alt="MediTrack on a phone call and on WhatsApp, explaining a blood report in Hindi" loading="lazy"></figure>
       <div class="stats">
         <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>People with a report explained</span></div>
@@ -343,11 +345,11 @@ section{position:relative;pointer-events:none}
       </div>
       <dl class="spec">
         <dt>Built</dt>
-        <dd data-draft>Three ways in. <b>Call</b> from any phone: it recognises your number and walks you through your reports. <b>WhatsApp</b> a photo or PDF and ask by text or voice note; replies come as voice notes or a short Hindi video. Or keep every report in the <b>web app</b> and ask across all of them. It reads reports from any Indian lab, flags out-of-range values, explains each one in plain words and says when to see a doctor.</dd>
+        <dd data-draft>Reads any Indian lab report, flags what’s off, says when to see a doctor.</dd>
         <dt>Hard part</dt>
-        <dd data-draft>Being useful without diagnosing. It’s a health-literacy tool, so it explains and points you to a doctor; it never tells you what you have. And most users mix Hindi and English in one sentence.</dd>
+        <dd data-draft>Explaining without diagnosing, for people who mix Hindi and English.</dd>
         <dt>Results</dt>
-        <dd>Piloted with 150 elderly patients, including at Rajwansh Hospital, Muzaffarnagar. Now deployed at 3 hospitals, from pilot to live rollout, with their patients using it. Featured in Indian media. Letter of recommendation from Uttar Pradesh’s Directorate of Training. <b>CREST Gold Award.</b> <b>Blue Ocean: Top 500 finalist of 23,000+ students from 173 countries.</b></dd>
+        <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by Uttar Pradesh’s Directorate of Training.</dd>
       </dl>
       <div class="gallery">
         <figure class="t"><img src="img/with-cardiologist.jpg" alt="Kabir going through a report with a cardiologist" style="object-position:50% 40%" loading="lazy"><figcaption>In consultations</figcaption></figure>
@@ -362,15 +364,13 @@ section{position:relative;pointer-events:none}
         <div><h3>This vs That</h3><div class="role">Creator &amp; developer</div></div>
         <span class="when">2025 – now</span>
       </div>
-      <p class="one">A comparison engine that is allowed to say “it depends”. It weighs evidence for both sides and returns one of five verdicts: This, That, Depends, Evidence conflicts or Insufficient evidence.</p>
+      <p class="one">An AI judge that’s allowed to say “it depends”.</p>
       <figure class="shot"><img src="img/thisvsthat-feed.jpg" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
       <dl class="spec">
         <dt>Built</dt>
-        <dd>A 5-stage pipeline. Stanford OVAL’s Co-STORM does the research; I built the rest: splitting the comparison, breaking evidence into cited atomic claims, labelling each clash as genuine or only apparent, and fixed rules that compute the verdict, so no model gets to pick the label.</dd>
+        <dd>A 5-stage pipeline on Stanford’s Co-STORM. Fixed rules, not a model, pick the verdict.</dd>
         <dt>Hard part</dt>
-        <dd data-draft>My own tests were wrong. The conflict classifier scored 93.8% on hand-written cases but 71.9% on real claim pairs, and a filter I was sure about saved no work while throwing away a quarter of the real conflicts. I deleted it.</dd>
-        <dt>Results</dt>
-        <dd>Live at thisvsthat.live and open source (MIT). Written up as a paper; see Research.</dd>
+        <dd data-draft>My tests lied: 93.8% on test cases, 71.9% on real ones.</dd>
       </dl>
       <div class="links">
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
@@ -381,18 +381,18 @@ section{position:relative;pointer-events:none}
     <!-- ShunyaLabs -->
     <article class="glass rv">
       <div class="head">
-        <div><h3>ShunyaLabs</h3><div class="role">Tech intern · mentored by the founder &amp; CEO</div></div>
+        <div><h3>ShunyaLabs</h3><div class="role">Tech Intern · mentored by the CEO</div></div>
         <span class="when">Summer 2026</span>
       </div>
-      <p class="one">ShunyaLabs makes voice AI (speech-to-text, text-to-speech and voice agents) for Indian languages, including speech that switches language mid-sentence. I built two agents on it.</p>
+      <p class="one">Voice AI for Indian languages. I shipped two agents.</p>
       <figure class="shot"><img src="img/shunyalabs-whatsapp.jpg" alt="The WhatsApp integration page in ShunyaLabs’ Voice Agent Platform" loading="lazy"></figure>
       <dl class="spec">
         <dt>WhatsApp</dt>
-        <dd>The WhatsApp integration in ShunyaLabs’ Voice Agent Platform, now live in beta. A business connects its Meta WhatsApp Business account, and its voice agents can send messages, links and QR codes to the caller in the middle of a call.</dd>
+        <dd>Voice agents send links and QR codes mid-call. Live in beta.</dd>
         <dt>Voice-to-cart</dt>
-        <dd data-draft>An add-on script that loads a chatbot on the side of any website. You say what you want and it builds your cart. <b>Raised checkout conversion by 9%.</b></dd>
+        <dd data-draft>Talk to any website to fill your cart. <b>+9% checkout conversion.</b></dd>
         <dt>Benchmarks</dt>
-        <dd>Compared multilingual voice models on token cost, latency and accuracy.</dd>
+        <dd>Voice models on cost, latency and accuracy.</dd>
       </dl>
       <div class="links"><a class="btn" href="https://agents.shunyalabs.ai" target="_blank" rel="noopener">agents.shunyalabs.ai ↗</a></div>
     </article>
@@ -403,11 +403,12 @@ section{position:relative;pointer-events:none}
         <div><h3>Pocket Reports</h3><div class="role">Founder &amp; host · podcast</div></div>
         <span class="when">2025 – now</span>
       </div>
-      <p class="one">A Spotify podcast breaking down major tech and policy reports: the World Happiness Report, Future of Jobs, open-weight AI.</p>
-      <dl class="spec">
-        <dt>Results</dt>
-        <dd><b>14</b> episodes · <b>170+</b> plays · <b>1,150</b> minutes listened</dd>
-      </dl>
+      <p class="one">Big tech and policy reports, unpacked.</p>
+      <div class="stats">
+        <div class="stat"><b data-count="14">14</b><span>Episodes</span></div>
+        <div class="stat"><b data-count="170" data-suffix="+">170+</b><span>Plays</span></div>
+        <div class="stat"><b data-count="1150">1,150</b><span>Minutes heard</span></div>
+      </div>
       <div class="links"><a class="btn" href="https://open.spotify.com/show/4h3vcAcZCLhsIMFEjN5hkq" target="_blank" rel="noopener">Listen on Spotify ↗</a></div>
     </article>
 
@@ -438,36 +439,31 @@ section{position:relative;pointer-events:none}
         <div><h3>AI voice explanations for medical reports</h3><div class="role">Author · Oxford Journal of Student Scholarship</div></div>
         <span class="when">Oct 2026</span>
       </div>
-      <p class="one">How do people in India make sense of English lab reports, and would they want them explained by voice in their own language? A survey of 103 adults and interviews in Hindi/Hinglish at a health camp in Muzaffarnagar.</p>
+      <p class="one">Would people rather hear their lab reports explained, in their own language?</p>
       <div class="gallery" style="--cols:1">
         <figure class="t"><img src="img/pilot-patients.jpg" alt="Kabir showing two women a report explanation on his phone" style="object-position:50% 38%" loading="lazy"><figcaption>Walking patients through their reports, Muzaffarnagar</figcaption></figure>
       </div>
-      <div class="dots" data-total="103" data-lit="99" aria-label="99 of 103 respondents"></div>
-      <div class="legend"><span><i></i><b>99 of 103</b> would rather have it explained by voice than text</span><span>1 square = 1 person</span></div>
       <dl class="spec">
         <dt>Method</dt>
-        <dd>Qualitative-dominant mixed methods: a survey of 103 adults (ages 18–88) plus 9 Hindi/Hinglish interviews, coded into themes. It measures what people prefer, not whether voice improves understanding, and the paper says so.</dd>
-        <dt>Hard part</dt>
-        <dd data-draft>Messy data. Automated transcripts merged speakers, so only 5 of the 9 interviews were clean enough to quote. I left the rest out instead of guessing.</dd>
+        <dd>Survey of 103 adults and 9 interviews, Muzaffarnagar.</dd>
+        <dt>Findings</dt>
+        <dd><b>99 of 103</b> prefer voice. <b>81.6%</b> struggle with report language.</dd>
         <dt>Results</dt>
-        <dd><b>Published</b> in OJSS, Vol 12 No 1 (Oct 2026). <b>Accepted</b> to ICARSS, Oxford. Commended by an Oxford professor. 81.6% said language made their reports hard to understand.</dd>
+        <dd>Published in OJSS. Accepted to ICARSS, Oxford.</dd>
       </dl>
       <div class="links"><a class="btn" href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener">Read the paper ↗</a></div>
     </article>
 
     <article class="glass rv">
       <div class="head">
-        <div><h3>This vs That: a comparison system that is allowed to say “it depends”</h3><div class="role">Author · design paper</div></div>
+        <div><h3>This vs That: allowed to say “it depends”</h3><div class="role">Author · design paper</div></div>
         <span class="when">2026</span>
       </div>
-      <p class="one">Language models always pick a winner, even when the honest answer is “it depends”. The paper describes how This vs That avoids that, and what measuring it showed.</p>
       <dl class="spec">
-        <dt>Method</dt>
-        <dd>A pre-registered comparison against a plain language model on 10 comparisons chosen in advance, each asked twice with the options swapped. Plus measurements of the pipeline itself.</dd>
         <dt>Findings</dt>
-        <dd>The plain model flipped its answer on 2 of 10 when the order changed; This vs That can’t, by design. But on the one comparison with a clear winner, mine hedged and the baseline got it right. Checking every claim pair (3,141 checks instead of 360) changed no verdict.</dd>
+        <dd>A plain LLM flipped its answer on <b>2 of 10</b> when the options swapped. Mine can’t.</dd>
         <dt>Results</dt>
-        <dd>Four corrections to my own system, three of them mistakes I only found by measuring. The paper reports all of them, including the ones that went against me.</dd>
+        <dd>4 fixes to my own system, 3 of them my mistakes.</dd>
       </dl>
       <div class="links">
         <a class="btn" href="papers/this-vs-that.pdf" target="_blank" rel="noopener">Read the paper ↗</a>
@@ -479,8 +475,8 @@ section{position:relative;pointer-events:none}
       <ul class="cv">
         <li>
           <span class="when">2025</span>
-          <div><b>Solar-integrated data centers</b><span class="org">NYAS Junior Academy · Fall 2025 · top 10% of 13,000 applicants</span>
-          <p>Our international team of six simulated a 2.2 GW solar farm to test whether data centers can soak up solar power the grid can’t take. Flexible compute plus batteries cut wasted solar by up to 85–95% in the most constrained cases. I led the energy infrastructure module. Project of Distinction, top 11 of 338 teams.</p></div>
+          <div><b>Solar-integrated data centers</b><span class="org">NYAS Junior Academy · Project of Distinction, top 11 of 338</span>
+          <p>Led energy infrastructure. Cut wasted solar by up to 95% in simulation.</p></div>
         </li>
       </ul>
     </div>
@@ -495,9 +491,9 @@ section{position:relative;pointer-events:none}
     <div class="glass rv">
       <p class="sub">Academics</p>
       <ul class="cv">
-        <li><span class="when">2025 – 27</span><div><b>IB Diploma, predicted 45/45</b><span class="org">Woodstock School</span><p>HL Math AA, Physics, Computer Science. Extended Essay in Math. SAT 1560.</p></div></li>
-        <li><span class="when">2025</span><div><b>College courses</b><span class="org">Stanford Pre-Collegiate · Harvard</span><p>Stanford Number Theory, A (91%), for college credit. <a href="https://cs50.harvard.edu/certificates/bdd22913-65d3-4f85-a9f9-ad5e7167e8b0" target="_blank" rel="noopener">Harvard CS50x</a>, 98%.</p></div></li>
-        <li><span class="when">2025</span><div><b>School awards</b><span class="org">Math · testing · MYP</span><p>AMC 12, #2 in school as a junior. Top PSAT score in school, NMSC qualifier. Top MYP score in my year (52/56), with the Math, Design and Spanish awards.</p></div></li>
+        <li><span class="when">2025 – 27</span><div><b>IB Diploma, predicted 45/45</b><span class="org">HL Math, Physics, CS · SAT 1560</span></div></li>
+        <li><span class="when">2025</span><div><b>College courses</b><span class="org">Stanford Number Theory (A) · <a href="https://cs50.harvard.edu/certificates/bdd22913-65d3-4f85-a9f9-ad5e7167e8b0" target="_blank" rel="noopener">Harvard CS50x</a> (98%)</span></div></li>
+        <li><span class="when">2025</span><div><b>School awards</b><span class="org">AMC 12 #2 in school · Top PSAT · Top MYP (52/56)</span></div></li>
       </ul>
     </div>
 
@@ -510,10 +506,9 @@ section{position:relative;pointer-events:none}
       </div>
       <ul class="cv">
         <li><span class="when">2026</span><div><b>Ladakh cycling expedition</b><span class="org">Week-long · up to 60 km/day uphill</span></div></li>
-        <li><span class="when">2024 – 25</span><div><b>Gaumukh glacier &amp; Surya Top treks</b><span class="org">Activity Week, hardest option both years</span></div></li>
-        <li><span class="when">2024 – 26</span><div><b>School Yearbook</b><span class="org">Editor-in-chief &amp; designer</span>
-          <p>Led a 25-person team across 3 editions and 700+ pages. Raised ~$20,000 through sponsors and sales.</p></div></li>
-        <li><span class="when">2025 – now</span><div><b>AI Club &amp; Physics Club</b><span class="org">Founder · first at the school</span></div></li>
+        <li><span class="when">2024 – 25</span><div><b>Gaumukh glacier &amp; Surya Top treks</b><span class="org">Hardest option both years</span></div></li>
+        <li><span class="when">2024 – 26</span><div><b>School Yearbook</b><span class="org">Editor-in-Chief · 3 editions · ~$20k raised</span></div></li>
+        <li><span class="when">2025 – now</span><div><b>AI Club &amp; Physics Club</b><span class="org">Founder</span></div></li>
         <li><span class="when">Also</span><div><p class="also">National Honor Society President<br>Centre for Imagination Café Head Intern<br>Math Department Vice-Head Intern<br>Spanish Language Ambassador<br>Senior Varsity Basketball, Starting Center</p></div></li>
       </ul>
     </div>
