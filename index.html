@@ -173,7 +173,7 @@ section{position:relative;pointer-events:none}
 /* product screenshots, shown whole */
 .shot{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#f3f2ef;display:flex;justify-content:center}
 .shot img{display:block;max-width:100%;height:auto}
-.shot.tall{background:#f0f0ee}
+.shot.tall{background:#fff}
 .shot.tall img{max-height:470px;width:auto}
 
 /* about */
@@ -207,13 +207,6 @@ section{position:relative;pointer-events:none}
 .hero-meta{font:500 11px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .hero-meta b{color:var(--ink);font-weight:500}
 .hero-lede{font-size:clamp(20px,2vw,27px);line-height:1.3;letter-spacing:-.02em;max-width:22ch}
-.proof{display:flex;flex-wrap:wrap;gap:8px;pointer-events:auto}
-.proof a{display:flex;flex-direction:column;gap:6px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;
-  background:rgba(12,12,15,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:border-color .3s,transform .3s var(--ease)}
-.proof a:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
-.proof a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.proof b{font:600 20px/1 var(--sans);letter-spacing:-.03em}
-.proof span{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .wordmark{position:absolute;z-index:1;left:3vw;bottom:112px;margin:0;font:700 15vw/.82 var(--sans);letter-spacing:-.065em;white-space:nowrap;
   background:linear-gradient(180deg,#f3f0e9 30%,#6f6b66);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cta{position:absolute;z-index:3;right:var(--gut);top:clamp(84px,14vh,140px);text-align:right;font:500 11px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -254,10 +247,6 @@ section{position:relative;pointer-events:none}
   .timer small{font-size:9px}
   .wordmark{left:16px;bottom:96px}
   .hero .col{margin-left:16px;right:16px;gap:var(--s3)}
-  .proof{gap:6px}
-  .proof a{padding:8px 10px;gap:5px}
-  .proof b{font-size:16px}
-  .proof span{font-size:8.5px;letter-spacing:.06em}
   .head{flex-direction:column;gap:4px}
   .spec{grid-template-columns:1fr}
   .spec dt{padding-bottom:0}
@@ -270,7 +259,6 @@ section{position:relative;pointer-events:none}
   .skip{margin-right:12px;padding:9px 11px;font-size:10px;letter-spacing:.08em;white-space:nowrap}
   .sm-hide{display:none}
   .brand{white-space:nowrap}
-  .proof{flex-wrap:nowrap}
   .outro{padding-bottom:130px}
   main{padding-bottom:90px}
 }
@@ -295,7 +283,7 @@ section{position:relative;pointer-events:none}
     <span>Kabir Gupta</span>
   </a>
   <div class="where" id="where">Scrambled</div>
-  <a class="skip" href="#projects" data-go="2"><span class="sm-hide">Skip to </span>projects ↓</a>
+  <a class="skip" href="#projects" data-go="2"><span class="sm-hide" id="skipPre">Skip to </span><span id="skipTo">projects</span> <span id="skipArrow">↓</span></a>
   <!-- unfolded cube: U on top, L F R B across, D below -->
   <nav class="net" aria-label="Sections">
     <button data-go="1" style="grid-area:2/2;--c:var(--G)"><span>01 · About me</span></button>
@@ -323,11 +311,6 @@ section{position:relative;pointer-events:none}
   <div class="col">
     <div class="hero-meta"><b>Builder</b> · Woodstock School<br>Mussoorie, India · Class of 2027</div>
     <p class="hero-lede" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
-    <nav class="proof" aria-label="Highlights">
-      <a href="https://www.meditrack.in/" target="_blank" rel="noopener"><b>1,500+</b><span>MediTrack ↗</span></a>
-      <a href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener"><b>Published</b><span>OJSS paper ↗</span></a>
-      <a href="https://agents.shunyalabs.ai" target="_blank" rel="noopener"><b>+9%</b><span>ShunyaLabs ↗</span></a>
-    </nav>
   </div>
   <div class="cta"><b>Scroll to solve</b>4 sections · 19 moves</div>
   <h1 class="wordmark split" id="wordmark">Kabir Gupta</h1>
@@ -340,13 +323,13 @@ section{position:relative;pointer-events:none}
 
     <div class="glass rv">
       <div class="about">
-        <figure class="ph"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"></figure>
+        <figure class="ph"><img width="278" height="350" src="img/portrait.webp" alt="Portrait of Kabir Gupta" loading="lazy"></figure>
         <p class="bio" data-draft>Senior at Woodstock School in the Himalayas. I build software that explains things in the languages people actually speak.</p>
       </div>
       <dl class="spec">
         <dt>From</dt><dd>San Francisco · Gurgaon</dd>
-        <dt>Speaks</dt><dd>English, Hindi, Spanish</dd>
-        <dt>Interests</dt><dd>12-second 3x3 PB · basketball (6′4″) · drums</dd>
+        <dt>Speaks</dt><dd>English, Hindi, Spanish, Indonesian</dd>
+        <dt>Interests</dt><dd>Speedcubing · basketball (6′4″) · drums</dd>
       </dl>
     </div>
   </div>
@@ -379,7 +362,7 @@ section{position:relative;pointer-events:none}
         <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by Uttar Pradesh’s Directorate of Training.</dd>
       </dl>
       <div class="gallery">
-        <figure class="t"><img width="900" height="1200" src="img/with-cardiologist.webp" alt="Kabir going through a report with a cardiologist" style="object-position:50% 40%" loading="lazy"><figcaption>In consultations</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports</figcaption></figure>
         <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>Landour Community Hospital, Mussoorie</figcaption></figure>
       </div>
       <div class="links"><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a></div>
@@ -889,6 +872,8 @@ if (renderer) {
   const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', 'Solved'];
   const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#4A80FF', '#f4f1ea'];
   const netBtns = [...document.querySelectorAll('.net button')];
+  const skipNames = ['', 'about', 'projects', 'research', 'outside'];
+  const skipPre = document.getElementById('skipPre'), skipTo = document.getElementById('skipTo'), skipArrow = document.getElementById('skipArrow');
   let lastStop = -1, lastTxt = '', lastK = -2;
 
   function hud(P, intro, stopIdx, sv) {
@@ -911,6 +896,16 @@ if (renderer) {
       document.documentElement.style.setProperty('--acc', accents[stopIdx]);
       document.body.dataset.stop = stopIdx;
       hint.style.opacity = (stopIdx === 0 || dragged) ? 0 : 1;
+      // the skip link always points at the section after the one on screen
+      const next = Math.max(2, stopIdx + 1);
+      const skip = document.querySelector('.skip');
+      if (next <= NS) {
+        skip.dataset.go = next; skip.href = '#' + secs[next].id;
+        skipPre.textContent = 'Skip to '; skipTo.textContent = skipNames[next]; skipArrow.textContent = '↓';
+      } else {
+        skip.dataset.go = 0; skip.href = '#top';
+        skipPre.textContent = 'Back to '; skipTo.textContent = 'top'; skipArrow.textContent = '↑';
+      }
       netBtns.forEach(b => {
         const g = +b.dataset.go;
         b.classList.toggle('on', g === stopIdx);
