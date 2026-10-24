@@ -5,10 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kabir Gupta · Scroll to Solve</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Cg%3E%3Crect x='3' y='3' width='8' height='8' rx='2' fill='%23F4F1EA'/%3E%3Crect x='12' y='3' width='8' height='8' rx='2' fill='%2319C37D'/%3E%3Crect x='21' y='3' width='8' height='8' rx='2' fill='%23FF3B30'/%3E%3Crect x='3' y='12' width='8' height='8' rx='2' fill='%232F6BFF'/%3E%3Crect x='12' y='12' width='8' height='8' rx='2' fill='%23FF8A00'/%3E%3Crect x='21' y='12' width='8' height='8' rx='2' fill='%23FFD23F'/%3E%3Crect x='3' y='21' width='8' height='8' rx='2' fill='%23FF3B30'/%3E%3Crect x='12' y='21' width='8' height='8' rx='2' fill='%23F4F1EA'/%3E%3Crect x='21' y='21' width='8' height='8' rx='2' fill='%2319C37D'/%3E%3C/g%3E%3C/svg%3E">
-<meta name="description" content="Kabir Gupta: projects, research, school work, community, outdoors.">
+<meta name="description" content="Kabir Gupta builds voice-first AI tools: MediTrack explains lab reports in Indian languages, This vs That is an AI judge that can say “it depends”.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kabir Gupta · Scroll to Solve">
+<meta property="og:description" content="Voice-first AI tools: MediTrack, This vs That, ShunyaLabs agents and two research papers.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -21,7 +29,7 @@
 :root{
   --bg:#09090b; --ink:#f3f0e9; --body:#cfcbc3; --mute:#8f8b84; --dim:#5d5a55;
   --line:rgba(255,255,255,.09); --glass:rgba(16,16,20,.64);
-  --W:#F4F1EA; --Y:#FFD23F; --R:#FF3B30; --O:#FF8A00; --B:#2F6BFF; --G:#19C37D;
+  --W:#F4F1EA; --Y:#FFD23F; --R:#FF3B30; --O:#FF8A00; --B:#4A80FF; --G:#19C37D;
   --acc:#f4f1ea;
   --sans:'Geist',system-ui,-apple-system,sans-serif;
   --mono:'Geist Mono',ui-monospace,Menlo,monospace;
@@ -64,7 +72,7 @@ p{margin:0}
 .logo i{width:6px;height:6px;border-radius:1.5px;background:var(--c)}
 .where{margin-left:28px;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
 .where::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--acc);box-shadow:0 0 14px var(--acc)}
-.net{display:grid;grid-template-columns:repeat(4,15px);grid-template-rows:repeat(3,15px);gap:3px}
+.net{display:grid;grid-template-columns:repeat(4,20px);grid-template-rows:repeat(3,20px);gap:4px}
 .net button{all:unset;cursor:pointer;border-radius:3px;border:1.5px solid color-mix(in srgb,var(--c) 55%,transparent);position:relative;transition:background .4s,transform .3s var(--ease),box-shadow .4s}
 .net button:hover{transform:scale(1.25)}
 .net button.seen{background:color-mix(in srgb,var(--c) 45%,transparent)}
@@ -199,6 +207,13 @@ section{position:relative;pointer-events:none}
 .hero-meta{font:500 11px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .hero-meta b{color:var(--ink);font-weight:500}
 .hero-lede{font-size:clamp(20px,2vw,27px);line-height:1.3;letter-spacing:-.02em;max-width:22ch}
+.proof{display:flex;flex-wrap:wrap;gap:8px;pointer-events:auto}
+.proof a{display:flex;flex-direction:column;gap:6px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;
+  background:rgba(12,12,15,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:border-color .3s,transform .3s var(--ease)}
+.proof a:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.proof a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.proof b{font:600 20px/1 var(--sans);letter-spacing:-.03em}
+.proof span{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .wordmark{position:absolute;z-index:1;left:3vw;bottom:112px;margin:0;font:700 15vw/.82 var(--sans);letter-spacing:-.065em;white-space:nowrap;
   background:linear-gradient(180deg,#f3f0e9 30%,#6f6b66);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cta{position:absolute;z-index:3;right:var(--gut);top:clamp(84px,14vh,140px);text-align:right;font:500 11px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -221,7 +236,7 @@ section{position:relative;pointer-events:none}
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
-  .gallery[style*="--cols:3"]{--cols:2}
+  .gallery[style*="--cols:3"],.gallery[style*="--cols:4"]{--cols:2}
   .gallery[style*="--cols:3"] figure:last-child{grid-column:1 / -1}
   .gallery figcaption{font-size:10px;padding:22px 10px 8px}
   :root{--s6:48px}
@@ -238,7 +253,11 @@ section{position:relative;pointer-events:none}
   .timer{flex-direction:column-reverse;align-items:flex-end;gap:4px}
   .timer small{font-size:9px}
   .wordmark{left:16px;bottom:96px}
-  .hero .col{margin-left:16px;right:16px}
+  .hero .col{margin-left:16px;right:16px;gap:var(--s3)}
+  .proof{gap:6px}
+  .proof a{padding:8px 10px;gap:5px}
+  .proof b{font-size:16px}
+  .proof span{font-size:8.5px;letter-spacing:.06em}
   .head{flex-direction:column;gap:4px}
   .spec{grid-template-columns:1fr}
   .spec dt{padding-bottom:0}
@@ -248,7 +267,10 @@ section{position:relative;pointer-events:none}
   .about .bio{font-size:15.5px}
   .contrib{grid-template-columns:repeat(25,1fr)}
   .top{padding:14px 16px}
-  .skip{margin-right:12px;padding:9px 11px;font-size:10px;letter-spacing:.08em}
+  .skip{margin-right:12px;padding:9px 11px;font-size:10px;letter-spacing:.08em;white-space:nowrap}
+  .sm-hide{display:none}
+  .brand{white-space:nowrap}
+  .proof{flex-wrap:nowrap}
   .outro{padding-bottom:130px}
   main{padding-bottom:90px}
 }
@@ -273,7 +295,7 @@ section{position:relative;pointer-events:none}
     <span>Kabir Gupta</span>
   </a>
   <div class="where" id="where">Scrambled</div>
-  <a class="skip" href="#projects" data-go="2">Skip to projects ↓</a>
+  <a class="skip" href="#projects" data-go="2"><span class="sm-hide">Skip to </span>projects ↓</a>
   <!-- unfolded cube: U on top, L F R B across, D below -->
   <nav class="net" aria-label="Sections">
     <button data-go="1" style="grid-area:2/2;--c:var(--G)"><span>01 · About me</span></button>
@@ -300,7 +322,12 @@ section{position:relative;pointer-events:none}
 <section class="hero" data-stop="0">
   <div class="col">
     <div class="hero-meta"><b>Builder</b> · Woodstock School<br>Mussoorie, India · Class of 2027</div>
-    <p class="hero-lede split" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
+    <p class="hero-lede" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
+    <nav class="proof" aria-label="Highlights">
+      <a href="https://www.meditrack.in/" target="_blank" rel="noopener"><b>1,500+</b><span>MediTrack ↗</span></a>
+      <a href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener"><b>Published</b><span>OJSS paper ↗</span></a>
+      <a href="https://agents.shunyalabs.ai" target="_blank" rel="noopener"><b>+9%</b><span>ShunyaLabs ↗</span></a>
+    </nav>
   </div>
   <div class="cta"><b>Scroll to solve</b>4 sections · 19 moves</div>
   <h1 class="wordmark split" id="wordmark">Kabir Gupta</h1>
@@ -313,7 +340,7 @@ section{position:relative;pointer-events:none}
 
     <div class="glass rv">
       <div class="about">
-        <figure class="ph"><img src="img/drums.jpg" alt="Kabir playing drums on stage" style="object-position:50% 42%" loading="lazy"></figure>
+        <figure class="ph"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"></figure>
         <p class="bio" data-draft>Senior at Woodstock School in the Himalayas. I build software that explains things in the languages people actually speak.</p>
       </div>
       <dl class="spec">
@@ -337,7 +364,7 @@ section{position:relative;pointer-events:none}
         <span class="when">2025 – now</span>
       </div>
       <p class="one">Lab reports explained by phone call, WhatsApp or web, in 5 Indian languages and Hinglish.</p>
-      <figure class="shot tall"><img src="img/meditrack-call-whatsapp.jpg" alt="MediTrack on a phone call and on WhatsApp, explaining a blood report in Hindi" loading="lazy"></figure>
+      <figure class="shot tall"><img width="1230" height="1500" src="img/meditrack-call-whatsapp.webp" alt="MediTrack on a phone call and on WhatsApp, explaining a blood report in Hindi" loading="lazy"></figure>
       <div class="stats">
         <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>People with a report explained</span></div>
         <div class="stat"><b data-count="3">3</b><span>Hospitals using it</span></div>
@@ -352,10 +379,10 @@ section{position:relative;pointer-events:none}
         <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by Uttar Pradesh’s Directorate of Training.</dd>
       </dl>
       <div class="gallery">
-        <figure class="t"><img src="img/with-cardiologist.jpg" alt="Kabir going through a report with a cardiologist" style="object-position:50% 40%" loading="lazy"><figcaption>In consultations</figcaption></figure>
-        <figure class="t"><img src="img/landour-hospital.jpg" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>Landour Community Hospital, Mussoorie</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/with-cardiologist.webp" alt="Kabir going through a report with a cardiologist" style="object-position:50% 40%" loading="lazy"><figcaption>In consultations</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>Landour Community Hospital, Mussoorie</figcaption></figure>
       </div>
-      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a></div>
+      <div class="links"><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a></div>
     </article>
 
     <!-- This vs That -->
@@ -365,7 +392,7 @@ section{position:relative;pointer-events:none}
         <span class="when">2025 – now</span>
       </div>
       <p class="one">An AI judge that’s allowed to say “it depends”.</p>
-      <figure class="shot"><img src="img/thisvsthat-feed.jpg" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
+      <figure class="shot"><img width="1400" height="1138" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
       <dl class="spec">
         <dt>Built</dt>
         <dd>A 5-stage pipeline on Stanford’s Co-STORM. Fixed rules, not a model, pick the verdict.</dd>
@@ -385,7 +412,7 @@ section{position:relative;pointer-events:none}
         <span class="when">Summer 2026</span>
       </div>
       <p class="one">Voice AI for Indian languages. I shipped two agents.</p>
-      <figure class="shot"><img src="img/shunyalabs-whatsapp.jpg" alt="The WhatsApp integration page in ShunyaLabs’ Voice Agent Platform" loading="lazy"></figure>
+      <figure class="shot"><img width="1400" height="811" src="img/shunyalabs-whatsapp.webp" alt="The WhatsApp integration page in ShunyaLabs’ Voice Agent Platform" loading="lazy"></figure>
       <dl class="spec">
         <dt>WhatsApp</dt>
         <dd>Voice agents send links and QR codes mid-call. Live in beta.</dd>
@@ -418,7 +445,7 @@ section{position:relative;pointer-events:none}
         <div><h3>Open source on GitHub</h3><div class="role">Solo developer · radcool22</div></div>
         <span class="when">Grade 7 – now</span>
       </div>
-      <div class="contrib" data-n="605" aria-label="605 squares, one per GitHub contribution"></div>
+      <div class="contrib" data-n="605" role="img" aria-label="605 squares, one per GitHub contribution"></div>
       <div class="stats">
         <div class="stat"><b data-count="605">605</b><span>Contributions</span></div>
         <div class="stat"><b data-count="17">17</b><span>Public repos</span></div>
@@ -440,9 +467,6 @@ section{position:relative;pointer-events:none}
         <span class="when">Oct 2026</span>
       </div>
       <p class="one">Would people rather hear their lab reports explained, in their own language?</p>
-      <div class="gallery" style="--cols:1">
-        <figure class="t"><img src="img/pilot-patients.jpg" alt="Kabir showing two women a report explanation on his phone" style="object-position:50% 38%" loading="lazy"><figcaption>Walking patients through their reports, Muzaffarnagar</figcaption></figure>
-      </div>
       <dl class="spec">
         <dt>Method</dt>
         <dd>Survey of 103 adults and 9 interviews, Muzaffarnagar.</dd>
@@ -498,11 +522,11 @@ section{position:relative;pointer-events:none}
     </div>
 
     <div class="glass rv">
-      <div class="gallery">
-        <figure class="t"><img src="img/gaumukh-glacier.jpg" alt="The group at Gaumukh glacier" style="object-position:50% 62%" loading="lazy"><figcaption>Gaumukh glacier</figcaption></figure>
-        <figure><img src="img/cycling.jpg" alt="The cycling group with the Himalayas behind" loading="lazy"><figcaption>Cycling in the hills</figcaption></figure>
-        <figure><img src="img/village-work.jpg" alt="Students working on a village infrastructure project" style="object-position:50% 60%" loading="lazy"><figcaption>Village infrastructure work</figcaption></figure>
-        <figure class="w t"><img src="img/basketball.jpg" alt="The varsity basketball team with a trophy" style="object-position:50% 55%" loading="lazy"><figcaption>Tournament win with the varsity team</figcaption></figure>
+      <div class="gallery" style="--cols:4">
+        <figure><img width="900" height="1200" src="img/gaumukh-glacier.webp" alt="The group at Gaumukh glacier" style="object-position:50% 62%" loading="lazy"><figcaption>Gaumukh</figcaption></figure>
+        <figure><img width="900" height="668" src="img/cycling.webp" alt="The cycling group with the Himalayas behind" loading="lazy"><figcaption>Cycling</figcaption></figure>
+        <figure><img width="900" height="675" src="img/basketball.webp" alt="The varsity basketball team with a trophy" style="object-position:50% 55%" loading="lazy"><figcaption>Varsity</figcaption></figure>
+        <figure><img width="900" height="1538" src="img/drums.webp" alt="Kabir playing drums on stage" style="object-position:50% 42%" loading="lazy"><figcaption>School band</figcaption></figure>
       </div>
       <ul class="cv">
         <li><span class="when">2026</span><div><b>Ladakh cycling expedition</b><span class="org">Week-long · up to 60 km/day uphill</span></div></li>
@@ -778,13 +802,13 @@ if (renderer) {
     mobile = innerWidth < 900;
     let hero, sec, out;
     if (mobile) {
-      hero = { x: 0, y: -.04 * visH, s: Math.min(.58, visW * .58 / 3) };
+      hero = { x: 0, y: -.12 * visH, s: Math.min(.5, visW * .5 / 3) };
       sec = { x: toX(innerWidth - 12 - 40), y: toY(innerHeight - 12 - 38), s: (58 / ppu) / EXT };
       out = { x: 0, y: .2 * visH, s: Math.min(.5, visW * .5 / 3) };
     } else {
       const col = document.querySelector('.face .col').getBoundingClientRect();
       const free = innerWidth - col.right;
-      hero = { x: .1 * visW, y: .04 * visH, s: Math.min(.98, visW * .5 / 3) };
+      hero = { x: .15 * visW, y: .04 * visH, s: Math.min(.98, visW * .5 / 3) };
       sec = { x: toX(col.right + free / 2), y: 0, s: Math.min(.8, (free * .7 / ppu) / EXT, visH * .6 / EXT) };
       out = { x: 0, y: .2 * visH, s: Math.min(.62, visH * .42 / EXT) };
     }
@@ -863,7 +887,7 @@ if (renderer) {
   const mvEls = SOLVE.map(m => { const s = document.createElement('span'); s.textContent = m.name; mvBox.append(s); return s; });
   const where = document.getElementById('where');
   const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', 'Solved'];
-  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#2F6BFF', '#f4f1ea'];
+  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#4A80FF', '#f4f1ea'];
   const netBtns = [...document.querySelectorAll('.net button')];
   let lastStop = -1, lastTxt = '', lastK = -2;
 
