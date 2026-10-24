@@ -170,6 +170,10 @@ section{position:relative;pointer-events:none}
 .shot{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#f3f2ef;display:flex;justify-content:center}
 .shot img{display:block;max-width:100%;height:auto}
 /* simulated product demos (rebuilt UI, animated by script) */
+#contact,#academy{min-height:85vh}
+.pod{display:grid;grid-template-columns:120px 1fr;gap:var(--s4);align-items:center}
+.pod img{width:120px;height:120px;border-radius:12px;display:block}
+.pod .stats{margin-top:var(--s3)}
 .sim{position:relative;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);container-type:inline-size}
 .live{display:inline-flex;align-items:center;gap:6px;margin-left:10px;vertical-align:4px;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
   color:#3ddc97;border:1px solid rgba(61,220,151,.4);background:rgba(61,220,151,.1);padding:5px 8px;border-radius:999px}
@@ -248,7 +252,8 @@ section{position:relative;pointer-events:none}
 .vav.me svg:not(.pp){color:#53bdeb}
 .vmeta.me{padding-left:3.9cqw;padding-right:6.4cqw}
 .bars.me i{background:#8aa39a}
-.msg.out .vn{width:24cqw}
+.msg .vn{width:24cqw}
+.msg .bars{min-width:0;overflow:hidden}
 .bars.me{min-width:0;overflow:hidden}
 .wa-rec{display:none;flex:1;align-items:center;gap:1.2cqw;background:#fff;border-radius:3cqw;padding:1.2cqw 1.6cqw;font-size:1.85cqw;color:#54656f}
 .wa-rec .dot{width:1.4cqw;height:1.4cqw;border-radius:50%;background:#f15c6d;animation:livep 1s ease-in-out infinite}
@@ -405,8 +410,8 @@ section{position:relative;pointer-events:none}
     <button data-go="2" style="grid-area:2/3;--c:var(--R)"><span>02 · Projects</span></button>
     <button data-go="3" style="grid-area:1/2;--c:var(--W)"><span>03 · Research</span></button>
     <button data-go="4" style="grid-area:2/4;--c:var(--B)"><span>04 · Outside of building</span></button>
-    <i class="pad" style="grid-area:2/1;--c:var(--O)" aria-hidden="true"></i>
-    <i class="pad" style="grid-area:3/2;--c:var(--Y)" aria-hidden="true"></i>
+    <button data-go="5" style="grid-area:2/1;--c:var(--O)"><span>05 · Contact me</span></button>
+    <button data-go="6" style="grid-area:3/2;--c:var(--Y)"><span>06 · Why the Academy</span></button>
   </nav>
 </header>
 
@@ -424,10 +429,9 @@ section{position:relative;pointer-events:none}
 <!-- ============ HERO ============ -->
 <section class="hero" data-stop="0">
   <div class="col">
-    <div class="hero-meta"><b>Builder</b> · voice AI in Indian languages<br>Woodstock School, Mussoorie · Class of 2027</div>
-    <p class="hero-lede" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
+    <div class="hero-meta">Woodstock School · Grade 12</div>
+    <p class="hero-lede" data-draft>Builder. Leader. Doer.</p>
   </div>
-  <div class="cta"><b>Scroll to solve</b>4 sections · 19 moves</div>
   <h1 class="wordmark split" id="wordmark">Kabir Gupta</h1>
 </section>
 
@@ -442,7 +446,7 @@ section{position:relative;pointer-events:none}
         <p class="bio" data-draft>Senior at Woodstock School in the Himalayas. I build software that explains things in the languages people actually speak.</p>
       </div>
       <dl class="spec">
-        <dt>From</dt><dd>San Francisco · Gurgaon</dd>
+        <dt>From</dt><dd>Born in San Francisco · Live in Gurgaon</dd>
         <dt>Speaks</dt><dd>English, Hindi, Spanish, Indonesian</dd>
         <dt>Interests</dt><dd>Speedcubing · basketball · drums</dd>
       </dl>
@@ -501,14 +505,14 @@ section{position:relative;pointer-events:none}
         <dd data-draft>Reads any Indian lab report, flags what’s off, says when to see a doctor.</dd>
         <dt>Hard part</dt>
         <dd data-draft>Explaining without diagnosing, for people who mix Hindi and English.</dd>
-        <dt hidden>Learned</dt>
-        <dd hidden class="learned" id="learned-meditrack"></dd>
-        <dt>Results</dt>
+        <dt>Learned</dt>
+        <dd class="learned" id="learned-meditrack" data-draft>TODO: what you learned</dd>
+        <dt>Awards</dt>
         <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by India’s State Government.</dd>
       </dl>
       <div class="gallery">
         <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
-        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At Landour Community Hospital, Mussoorie, near my school</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
       </div>
       <div class="links"><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a></div>
     </article>
@@ -526,8 +530,8 @@ section{position:relative;pointer-events:none}
         <dd>A 5-stage pipeline on Stanford’s Co-STORM. Fixed rules, not a model, pick the verdict.</dd>
         <dt>Hard part</dt>
         <dd data-draft>My tests lied: 93.8% on test cases, 71.9% on real ones.</dd>
-        <dt hidden>Learned</dt>
-        <dd hidden class="learned" id="learned-thisvsthat"></dd>
+        <dt>Learned</dt>
+        <dd class="learned" id="learned-thisvsthat" data-draft>TODO: what you learned</dd>
       </dl>
       <div class="links">
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
@@ -563,8 +567,8 @@ section{position:relative;pointer-events:none}
         <dd data-draft>Talk to any website to fill your cart. <b>+9% checkout conversion</b> vs. the regular checkout, over 3 weeks.</dd>
         <dt>Benchmarks</dt>
         <dd>Voice models on cost, latency and accuracy.</dd>
-        <dt hidden>Learned</dt>
-        <dd hidden class="learned" id="learned-shunyalabs"></dd>
+        <dt>Learned</dt>
+        <dd class="learned" id="learned-shunyalabs" data-draft>TODO: what you learned</dd>
       </dl>
       <div class="links"><a class="btn" href="https://agents.shunyalabs.ai" target="_blank" rel="noopener">agents.shunyalabs.ai ↗</a></div>
     </article>
@@ -575,10 +579,15 @@ section{position:relative;pointer-events:none}
         <div><h3>Pocket Reports</h3><div class="role">Founder &amp; host · podcast</div></div>
         <span class="when">2025 – now</span>
       </div>
+      <div class="pod">
+        <img width="480" height="480" src="img/pocket-reports.webp" alt="Pocket Reports cover art" loading="lazy">
+        <div>
       <p class="one">Big tech and policy reports, unpacked.</p>
       <div class="stats">
         <div class="stat"><b data-count="14">14</b><span>Episodes</span></div>
         <div class="stat"><b data-count="1150">1,150</b><span>Minutes listened</span></div>
+      </div>
+        </div>
       </div>
       <div class="links"><a class="btn" href="https://open.spotify.com/show/4h3vcAcZCLhsIMFEjN5hkq" target="_blank" rel="noopener">Listen on Spotify ↗</a></div>
     </article>
@@ -587,14 +596,9 @@ section{position:relative;pointer-events:none}
     <article class="glass rv">
       <div class="head">
         <div><h3>Open source on GitHub</h3><div class="role">Solo developer · radcool22</div></div>
-        <span class="when">Grade 7 – now</span>
+        <span class="when">Since 7th Grade</span>
       </div>
       <div class="contrib" data-n="605" role="img" aria-label="605 squares, one per GitHub contribution"></div>
-      <div class="stats">
-        <div class="stat"><b data-count="605">605</b><span>Contributions</span></div>
-        <div class="stat"><b data-count="17">17</b><span>Public repos</span></div>
-        <div class="stat"><b>Solo</b><span>Every repo</span></div>
-      </div>
       <div class="links"><a class="btn" href="https://github.com/radcool22" target="_blank" rel="noopener">github.com/radcool22 ↗</a></div>
     </article>
   </div>
@@ -618,8 +622,8 @@ section{position:relative;pointer-events:none}
         <dd><b>99 of 103</b> prefer voice. <b>81.6%</b> struggle with report language.</dd>
         <dt>Results</dt>
         <dd>Published in OJSS. Accepted to ICARSS, Oxford.</dd>
-        <dt hidden>Learned</dt>
-        <dd hidden class="learned" id="learned-research"></dd>
+        <dt>Learned</dt>
+        <dd class="learned" id="learned-research" data-draft>TODO: what you learned</dd>
       </dl>
       <div class="links"><a class="btn" href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener">Read the paper ↗</a></div>
     </article>
@@ -641,15 +645,6 @@ section{position:relative;pointer-events:none}
       </div>
     </article>
 
-    <div class="glass rv">
-      <ul class="cv">
-        <li>
-          <span class="when">2025</span>
-          <div><b>Solar-integrated data centers</b><span class="org">NYAS Junior Academy · Project of Distinction, top 11 of 338</span>
-          <p>Led energy infrastructure. Cut wasted solar by up to 95% in simulation.</p></div>
-        </li>
-      </ul>
-    </div>
   </div>
 </section>
 
@@ -671,28 +666,53 @@ section{position:relative;pointer-events:none}
         <li><span class="when">2024 – 25</span><div><b>Gaumukh glacier &amp; Surya Top treks</b><span class="org">Chosen for the hardest option in Activity Week, both years</span></div></li>
         <li><span class="when">2024 – 26</span><div><b>School Yearbook</b><span class="org">Editor-in-Chief · 3 editions · ~$20k raised</span></div></li>
         <li><span class="when">2025 – now</span><div><b>AI Club &amp; Physics Club</b><span class="org">Founder</span></div></li>
-        <li><span class="when">Also</span><div><p class="also">National Honor Society President<br>Centre for Imagination Café Head Intern<br>Math Department Vice-Head Intern<br>Spanish Language Ambassador<br>Senior Varsity Basketball, Starting Center</p></div></li>
+        <li><span class="when">2026 – now</span><div><b>National Honor Society</b><span class="org">President · elected unanimously · 30 members</span></div></li>
+        <li><span class="when">2023 – now</span><div><b>Centre for Imagination Café</b><span class="org">Head Intern · nominated by teachers</span></div></li>
+        <li><span class="when">2024 – 25</span><div><b>Senior Varsity Basketball</b><span class="org">Starting Center · 5+ tournaments</span></div></li>
+        <li><span class="when">2025 – now</span><div><b>Math Department</b><span class="org">Vice-Head Intern · peer tutor</span></div></li>
+        <li><span class="when">2025 – now</span><div><b>Spanish Language Ambassador</b><span class="org">1 of 2 in the school</span></div></li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- ============ 05 · CONTACT · orange ============ -->
+<section class="face" id="contact" data-stop="5" style="--c:var(--O)">
+  <div class="col">
+    <div class="sec-head rv"><span class="n">05</span><h2>Contact me</h2></div>
+    <div class="glass rv">
+      <p class="one"><a href="mailto:kabirgupta2201@gmail.com">kabirgupta2201@gmail.com</a></p>
+      <div class="links">
+        <a class="btn" href="https://github.com/radcool22" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://x.com/kabirgupt4" target="_blank" rel="noopener">X</a>
+        <a class="btn" href="https://www.linkedin.com/in/kabirgupta22/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://bit.ly/kabir-gupta-cv" target="_blank" rel="noopener">CV</a>
+        <a class="btn" href="mailto:kabirgupta2201@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · WHY THE ACADEMY · yellow ============ -->
+<section class="face" id="academy" data-stop="6" style="--c:var(--Y)">
+  <div class="col">
+    <div class="sec-head rv"><span class="n">06</span><h2>Why the Academy</h2></div>
+    <div class="glass rv">
+      <p class="one" data-draft>TODO: why the Academy</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SOLVED ============ -->
-<section class="outro" id="solved" data-stop="5">
+<section class="outro" id="solved" data-stop="7">
   <div class="col rv">
     <span class="sub">19 moves · 12.00 s · my PB</span>
     <h2 class="split">Solved.</h2>
-    <div class="links">
-      <a class="btn" href="https://github.com/radcool22" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="https://x.com/kabirgupt4" target="_blank" rel="noopener">X</a>
-      <a class="btn" href="https://www.linkedin.com/in/kabirgupta22/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://bit.ly/kabir-gupta-cv" target="_blank" rel="noopener">CV</a>
-      <a class="btn" href="mailto:kabirgupta2201@gmail.com">Email</a>
-    </div>
     <button class="again" id="again">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
       Scramble it again
     </button>
+    <p class="sub">Built with Claude Code · every word written by me</p>
   </div>
 </section>
 
@@ -1154,10 +1174,10 @@ if (renderer) {
   const mvBox = document.getElementById('mv');
   const mvEls = SOLVE.map(m => { const s = document.createElement('span'); s.textContent = m.name; mvBox.append(s); return s; });
   const where = document.getElementById('where');
-  const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', 'Solved'];
-  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#4A80FF', '#f4f1ea'];
+  const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', '05 · Contact me', '06 · Why the Academy', 'Solved'];
+  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#4A80FF', '#FF8A00', '#FFD23F', '#f4f1ea'];
   const netBtns = [...document.querySelectorAll('.net button')];
-  const skipNames = ['', 'about', 'projects', 'research', 'outside'];
+  const skipNames = ['', 'about', 'projects', 'research', 'outside', 'contact', 'academy'];
   const skipPre = document.getElementById('skipPre'), skipTo = document.getElementById('skipTo'), skipArrow = document.getElementById('skipArrow');
   let lastStop = -1, lastTxt = '', lastK = -2;
 
