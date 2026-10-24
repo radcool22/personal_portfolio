@@ -243,6 +243,20 @@ section{position:relative;pointer-events:none}
 .vmeta{display:flex;justify-content:space-between;align-items:center;padding-left:6.6cqw}
 .vmeta small{font-size:1.3cqw;color:#667781}
 .vmeta time{float:none;margin:0}
+.vav .pp{position:static;width:3cqw;height:3cqw;color:#fff}
+.vav.me{background:#c5ced3}
+.vav.me svg:not(.pp){color:#53bdeb}
+.vmeta.me{padding-left:3.9cqw;padding-right:6.4cqw}
+.bars.me i{background:#8aa39a}
+.msg.out .vn{width:24cqw}
+.bars.me{min-width:0;overflow:hidden}
+.wa-rec{display:none;flex:1;align-items:center;gap:1.2cqw;background:#fff;border-radius:3cqw;padding:1.2cqw 1.6cqw;font-size:1.85cqw;color:#54656f}
+.wa-rec .dot{width:1.4cqw;height:1.4cqw;border-radius:50%;background:#f15c6d;animation:livep 1s ease-in-out infinite}
+.wa-rec .t{font-variant-numeric:tabular-nums;color:#111b21}
+.wa-rec .cancel{margin-left:auto;font-size:1.6cqw;color:#8696a0}
+.wa-in.rec .wa-fld{display:none}
+.wa-in.rec .wa-rec{display:flex}
+.wa-in.rec .wa-mic{transform:scale(1.35);transition:transform .2s}
 @keyframes pop{from{opacity:0;transform:translateY(1cqw) scale(.98)}to{opacity:1;transform:none}}
 .wa-in{flex:none;display:flex;align-items:center;gap:.9cqw;padding:.9cqw 1.3cqw 2.6cqw}
 .wa-fld{flex:1;display:flex;align-items:center;gap:1.2cqw;background:#fff;border-radius:3cqw;padding:1.2cqw 1.6cqw;color:#8696a0;font-size:1.85cqw}
@@ -448,8 +462,8 @@ section{position:relative;pointer-events:none}
         <span class="when">2025 – now</span>
       </div>
       <p class="one">Lab reports explained by phone call, WhatsApp or web, in 5 Indian languages and Hinglish.</p>
-      <figure class="sim mt-sim" id="mtSim" role="img" aria-label="Simulated demo of the live product: MediTrack explaining a blood report in Hindi, on a phone call and on WhatsApp">
-        <span class="sim-tag">Simulated demo · live product</span>
+      <figure class="sim mt-sim" id="mtSim" role="img" aria-label="Simulated demo: MediTrack explaining a blood report in Hindi on a phone call and over WhatsApp voice notes. Both channels are live.">
+        <span class="sim-tag">Simulated demo · calls &amp; WhatsApp both live</span>
         <div class="phone mt-call" aria-hidden="true"><div class="scr">
           <div class="island"></div>
           <div class="sb"><span>9:41</span><svg class="sbi" viewBox="0 0 66 14"><g fill="currentColor"><rect x="0" y="9" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="8" rx="1"/><rect x="10" y="3" width="3" height="11" rx="1"/><rect x="15" y="0" width="3" height="14" rx="1"/><path d="M31 2.5c3.6 0 6.8 1.5 9 3.9l-1.7 1.6A9.9 9.9 0 0 0 31 4.8 9.9 9.9 0 0 0 23.7 8L22 6.4c2.2-2.4 5.4-3.9 9-3.9zm0 4.6c2.2 0 4.1.9 5.4 2.4L31 14l-5.4-4.5A7 7 0 0 1 31 7.1z"/><rect x="45" y="1.5" width="18" height="11" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45"/><rect x="46.8" y="3.3" width="12.5" height="7.4" rx="1.7"/><rect x="63.8" y="5" width="1.6" height="4" rx=".8" opacity=".45"/></g></svg></div>
@@ -719,15 +733,25 @@ section{position:relative;pointer-events:none}
     ];
     var TICK = '<svg viewBox="0 0 16 11"><path d="M11.07.65 4.8 7.38 2.05 4.6.98 5.68l3.82 3.86L12.14 1.72 11.07.65zm3.1 0L7.9 7.38l-.7-.7-1.07 1.07 1.77 1.79L15.24 1.72 14.17.65z"/></svg>', PLAY = '<svg class="vplay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>', MIC = '<svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5.3-3a5.3 5.3 0 0 1-10.6 0H5a7 7 0 0 0 6 6.72V21h2v-3.28A7 7 0 0 0 19 11h-1.7z"/></svg>';
     var bars = ''; for (var i = 0; i < 28; i++) bars += '<i style="--h:' + (22 + Math.round(72 * Math.abs(Math.sin(i * 1.7) * Math.cos(i * .45)))) + '%"></i>';
+    var barsMe = ''; for (var j = 0; j < 22; j++) barsMe += '<i class="on" style="--h:' + (25 + Math.round(70 * Math.abs(Math.sin(j * 2.3 + 1)))) + '%"></i>';
     var msgs = {
       pdf: ['out tail', '<div class="doc"><i>PDF</i><div><b>blood_report.pdf</b><small>2 pages · 312 kB · pdf</small></div></div><time>9:41 ' + TICK + '</time>'],
       a1: ['in tail', 'आपका <b>hemoglobin</b> थोड़ा कम है। बाकी values normal हैं। 👍<time>9:41</time>'],
-      vn: ['in', '<div class="vn"><span class="vav">M' + MIC + '</span>' + PLAY + '<span class="bars">' + bars + '</span></div><div class="vmeta"><small>0:24</small><time>9:41</time></div>'],
-      q: ['out tail', 'कम क्यों होता है?<time>9:42 ' + TICK + '</time>'],
-      a2: ['in tail', 'अक्सर iron की कमी से। पालक और दालें मदद करती हैं। एक बार डॉक्टर से ज़रूर पूछिए।<time>9:42</time>']
+      vn: ['in tail', '<div class="vn"><span class="vav">M' + MIC + '</span>' + PLAY + '<span class="bars">' + bars + '</span></div><div class="vmeta"><small>0:18</small><time>9:42</time></div>'],
+      me: ['out tail', '<div class="vn">' + PLAY + '<span class="bars me">' + barsMe + '</span><span class="vav me">PERSON_SVG' + MIC + '</span></div><div class="vmeta me"><small>0:04</small><time>9:42 ' + TICK + '</time></div>']
     };
     function add(m) { var d = document.createElement('div'); d.className = 'msg ' + m[0]; d.innerHTML = m[1]; body.appendChild(d); return d; }
     function typing(on) { status.textContent = on ? 'typing…' : 'online'; }
+    var PERSON = '<svg class="pp" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-3.3 0-8 1.7-8 5v1h16v-1c0-3.3-4.7-5-8-5z"/></svg>';
+    msgs.me[1] = msgs.me[1].replace('PERSON_SVG', PERSON);
+    var bar = el.querySelector('.wa-in'), rec = document.createElement('div'), recT, recClock;
+    rec.className = 'wa-rec'; rec.innerHTML = '<span class="dot"></span><span class="t">0:00</span><span class="cancel">‹ Slide to cancel</span>';
+    bar.insertBefore(rec, bar.firstChild);
+    function recording(on) {
+      clearInterval(recClock); bar.classList.toggle('rec', on);
+      if (on) { recT = 0; rec.querySelector('.t').textContent = '0:00'; recClock = setInterval(function () { recT++; rec.querySelector('.t').textContent = '0:0' + Math.min(recT, 9); }, 750); }
+    }
+    function playVN(v) { var b = v.querySelectorAll('.bars i'), k = 0; var t = setInterval(function () { if (k < b.length) b[k++].classList.add('on'); else clearInterval(t); }, 110); }
     function caps(i) {
       A.classList.add('off'); B.classList.add('off');
       setTimeout(function () { capA.textContent = call[i][0]; capB.textContent = call[i][1]; A.classList.remove('off'); }, 400);
@@ -735,7 +759,7 @@ section{position:relative;pointer-events:none}
     }
     return {
       reset: function () {
-        body.innerHTML = '<div class="day">Today</div>'; typing(false); clearInterval(clock); secs = 134;
+        body.innerHTML = '<div class="day">Today</div>'; typing(false); recording(false); clearInterval(clock); secs = 134;
         clock = setInterval(function () { secs++; time.textContent = ('0' + Math.floor(secs / 60)).slice(-2) + ':' + ('0' + secs % 60).slice(-2); }, 1000);
       },
       steps: function (at) {
@@ -743,19 +767,16 @@ section{position:relative;pointer-events:none}
         at(500, function () { add(msgs.pdf); });
         at(1300, function () { typing(true); });
         at(2700, function () { typing(false); add(msgs.a1); });
-        at(3500, function () {
-          var v = add(msgs.vn), b = v.querySelectorAll('.bars i'), k = 0;
-          var t = setInterval(function () { if (k < b.length) b[k++].classList.add('on'); else clearInterval(t); }, 100);
-        });
+        at(4200, function () { recording(true); });
         at(5000, function () { caps(1); });
-        at(7000, function () { add(msgs.q); });
-        at(7800, function () { typing(true); });
-        at(9300, function () { typing(false); add(msgs.a2); });
-        at(10000, function () { caps(2); });
+        at(7300, function () { recording(false); add(msgs.me); });
+        at(8000, function () { status.textContent = 'recording audio…'; });
+        at(9600, function () { status.textContent = 'online'; playVN(add(msgs.vn)); });
+        at(10200, function () { caps(2); });
       },
       final: function () {
         clearInterval(clock); body.innerHTML = '<div class="day">Today</div>';
-        ['pdf', 'a1', 'vn', 'q', 'a2'].forEach(function (k) { add(msgs[k]); });
+        ['pdf', 'a1', 'me', 'vn'].forEach(function (k) { add(msgs[k]); });
         body.querySelectorAll('.bars i').forEach(function (i) { i.classList.add('on'); });
       }
     };
