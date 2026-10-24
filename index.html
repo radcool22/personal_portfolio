@@ -9,10 +9,6 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kabir Gupta · Scroll to Solve">
 <meta property="og:description" content="Voice-first AI tools: MediTrack, This vs That, ShunyaLabs agents and two research papers.">
-<meta property="og:image" content="og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -173,8 +169,85 @@ section{position:relative;pointer-events:none}
 /* product screenshots, shown whole */
 .shot{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#f3f2ef;display:flex;justify-content:center}
 .shot img{display:block;max-width:100%;height:auto}
-.shot.tall{background:#fff}
-.shot.tall img{max-height:470px;width:auto}
+/* simulated product demos (rebuilt UI, animated by script) */
+.sim{position:relative;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);container-type:inline-size}
+.sim-tag{position:absolute;z-index:5;right:10px;top:10px;font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:#555;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.08);padding:5px 7px;border-radius:6px}
+
+/* MediTrack: call + WhatsApp */
+.mt-sim{aspect-ratio:10/9;background:#fff;font-family:var(--sans),system-ui,sans-serif}
+.mt-sim .phone{position:absolute;border:1.5cqw solid #121212;border-radius:6.5cqw;overflow:hidden;box-shadow:0 3cqw 6cqw rgba(0,0,0,.18)}
+.mt-sim .island{position:absolute;left:50%;top:1.6cqw;width:13cqw;height:3cqw;border-radius:2cqw;background:#121212;transform:translateX(-50%);z-index:2}
+.mt-call{left:5cqw;top:3cqw;width:42cqw;height:83cqw;transform:rotate(-4deg);color:#fff;text-align:center;
+  background:radial-gradient(circle at 50% 22%,#203626,#0c0f0d 62%)}
+.mt-av{width:12cqw;height:12cqw;margin:10cqw auto 0;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font:800 6.4cqw/1 var(--sans)}
+.mt-call .nm{margin-top:2.6cqw;font:700 3.6cqw/1 var(--sans);letter-spacing:-.03em}
+.mt-call .tm{margin-top:1.4cqw;font:500 2.5cqw/1 var(--mono);color:#b9b9b9}
+.mt-wave{display:flex;justify-content:center;align-items:center;gap:.9cqw;height:7cqw;margin-top:3cqw}
+.mt-wave i{width:.8cqw;height:30%;border-radius:1cqw;background:#c6f36b;animation:wv 1s ease-in-out infinite;animation-delay:calc(var(--k) * -.13s)}
+@keyframes wv{0%,100%{height:22%}50%{height:100%}}
+.mt-caps{position:absolute;left:3cqw;right:3cqw;bottom:14cqw;display:flex;flex-direction:column;gap:1.6cqw;text-align:left}
+.mt-cap{padding:1.8cqw 2.2cqw;border-radius:2.4cqw;font:400 2.25cqw/1.35 var(--sans);transition:opacity .4s,transform .4s}
+.mt-cap small{display:block;font:500 1.6cqw/1 var(--mono);letter-spacing:.1em;opacity:.65;margin-bottom:.8cqw}
+.mt-cap.mt{background:#262826;color:#fff;margin-right:5cqw}
+.mt-cap.you{background:#c9f26b;color:#141414;margin-left:9cqw}
+.mt-cap.off{opacity:0;transform:translateY(1cqw)}
+.mt-ctrl{position:absolute;left:0;right:0;bottom:4cqw;display:flex;justify-content:center;gap:4cqw}
+.mt-ctrl i{width:7cqw;height:7cqw;border-radius:50%;background:#2a2c2a}
+.mt-ctrl i.end{background:#ff3b30;position:relative}
+.mt-ctrl i.end::after{content:"";position:absolute;left:30%;right:30%;top:45%;height:10%;border-radius:1cqw;background:#fff}
+.mt-wa{left:50cqw;top:6cqw;width:45cqw;height:82cqw;transform:rotate(4deg);background:#efe7de;display:flex;flex-direction:column}
+.mt-wa .hd{flex:none;height:13.5cqw;padding:5.6cqw 2.6cqw 0;background:#0b5e55;color:#fff;display:flex;align-items:center;gap:2cqw}
+.mt-wa .hd .mt-av{width:6cqw;height:6cqw;margin:0;font-size:3cqw}
+.mt-wa .hd b{display:block;font:600 2.7cqw/1.1 var(--sans)}
+.mt-wa .hd small{display:block;font:400 1.9cqw/1.2 var(--sans);opacity:.8}
+.mt-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:1.4cqw;padding:2.2cqw 2.2cqw 1.4cqw;overflow:hidden;transition:opacity .4s}
+.msg{max-width:84%;padding:1.5cqw 1.9cqw 1.1cqw;border-radius:1.8cqw;font:400 2.15cqw/1.38 var(--sans);color:#111;background:#fff;
+  box-shadow:0 .2cqw .3cqw rgba(0,0,0,.08);animation:pop .35s cubic-bezier(.2,.8,.2,1) both}
+.msg.out{align-self:flex-end;background:#d9fdd3}
+.msg time{display:block;text-align:right;font:400 1.5cqw/1 var(--sans);color:#7a7a7a;margin-top:.6cqw}
+.msg .pdf{display:flex;align-items:center;gap:1.6cqw}
+.msg .pdf i{width:4.4cqw;height:5.4cqw;border-radius:.6cqw;background:#fff;border:.2cqw solid #ddd;display:grid;place-items:end center;
+  font:700 1.3cqw/1 var(--sans);font-style:normal;color:#e5322d;padding-bottom:.6cqw}
+.msg .vn{display:flex;align-items:center;gap:1.4cqw;width:27cqw}
+.msg .vn .play{flex:none;width:0;height:0;border-left:2.2cqw solid #0b5e55;border-top:1.3cqw solid transparent;border-bottom:1.3cqw solid transparent}
+.msg .vn .bars{flex:1;display:flex;align-items:center;gap:.35cqw;height:3.4cqw}
+.msg .vn .bars i{flex:1;border-radius:.4cqw;background:#c3c9c6;height:var(--h)}
+.msg .vn .bars i.on{background:#0b8f80}
+.msg .vn small{font:400 1.6cqw/1 var(--sans);color:#666}
+.typing{align-self:flex-start;display:flex;gap:.6cqw;padding:1.8cqw 2cqw;border-radius:1.8cqw;background:#fff;animation:pop .3s both}
+.typing i{width:1cqw;height:1cqw;border-radius:50%;background:#9aa;animation:dot 1s infinite;animation-delay:calc(var(--k) * .15s)}
+@keyframes dot{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-.4cqw)}}
+@keyframes pop{from{opacity:0;transform:translateY(1.2cqw) scale(.97)}to{opacity:1;transform:none}}
+.mt-wa .in{flex:none;display:flex;align-items:center;gap:1.4cqw;padding:1.4cqw 2cqw 2.6cqw}
+.mt-wa .in span{flex:1;background:#fff;border-radius:3cqw;padding:1.6cqw 2.2cqw;font:400 2cqw/1 var(--sans);color:#999}
+.mt-wa .in i{width:5.2cqw;height:5.2cqw;border-radius:50%;background:#0b5e55}
+
+/* ShunyaLabs: screenshot brought to life */
+.sl-sim{aspect-ratio:1400/811;background:#f8f4ee}
+.sl-sim .sim-tag{top:auto;bottom:10px}
+.sl-stage{position:absolute;inset:0;transition:transform 1.1s cubic-bezier(.65,0,.35,1);font-family:system-ui,-apple-system,sans-serif}
+.sl-stage img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sl-fill{position:absolute;left:19.25%;width:77.6%;height:3.95%;background:#fff;border-radius:.45cqw;display:flex;align-items:center;
+  padding-left:.75%;font-size:1.05cqw;color:#1a1a1a;opacity:0;transition:opacity .2s;white-space:nowrap;overflow:hidden}
+.sl-fill.on{opacity:1}
+.sl-fill.focus{box-shadow:0 0 0 .15cqw #1a1a1a}
+.sl-fill .caret{display:inline-block;width:.08cqw;height:1.2cqw;background:#1a1a1a;margin-left:.1cqw;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sl-check{position:absolute;left:19%;top:37.2%;width:.98%;height:1.7%;border-radius:.2cqw;background:#1a1a1a;opacity:0;transition:opacity .2s;display:grid;place-items:center}
+.sl-check::after{content:"";width:35%;height:60%;border:solid #fff;border-width:0 .16cqw .16cqw 0;transform:rotate(45deg) translate(-10%,-10%)}
+.sl-check.on{opacity:1}
+.sl-save{position:absolute;left:19%;top:50.8%;width:4.7%;height:3.9%;border-radius:.5cqw;background:#1a1a1a;color:#fff;display:grid;place-items:center;
+  font-size:1.05cqw;font-weight:500;opacity:0;transition:opacity .3s}
+.sl-save.on{opacity:1}
+.sl-badge{position:absolute;left:92.6%;top:2.7%;width:6.2%;height:2.5%;border-radius:2cqw;background:#e6f6ec;color:#127a3c;display:grid;place-items:center;
+  font-size:.82cqw;font-weight:600;opacity:0;transition:opacity .4s}
+.sl-badge.on{opacity:1}
+.sl-cursor{position:absolute;width:1.5%;left:60%;top:80%;transition:left .8s cubic-bezier(.4,0,.2,1),top .8s cubic-bezier(.4,0,.2,1);z-index:3;filter:drop-shadow(0 .1cqw .2cqw rgba(0,0,0,.35))}
+.sl-cursor svg{display:block;width:100%;height:auto}
+.sl-ripple{position:absolute;width:3%;aspect-ratio:1;border-radius:50%;border:.2cqw solid #2f6bff;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none}
+.sl-ripple.go{animation:rip .6s ease-out}
+@keyframes rip{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}
 
 /* about */
 .about{display:grid;grid-template-columns:150px 1fr;gap:var(--s4);align-items:start}
@@ -191,8 +264,8 @@ section{position:relative;pointer-events:none}
 
 /* contribution grid */
 .contrib{display:grid;grid-template-columns:repeat(35,1fr);gap:3px;margin-bottom:var(--s1)}
-.contrib i{aspect-ratio:1;border-radius:2px;background:rgba(255,255,255,.05);transition:background .3s;transition-delay:var(--d)}
-.contrib.in i{background:color-mix(in srgb,var(--c) var(--a),rgba(255,255,255,.05))}
+.contrib i{aspect-ratio:1;border-radius:2px;background:#161b22;transition:background .3s;transition-delay:var(--d)}
+.contrib.in i{background:var(--g)}
 
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
@@ -309,7 +382,7 @@ section{position:relative;pointer-events:none}
 <!-- ============ HERO ============ -->
 <section class="hero" data-stop="0">
   <div class="col">
-    <div class="hero-meta"><b>Builder</b> · Woodstock School<br>Mussoorie, India · Class of 2027</div>
+    <div class="hero-meta"><b>Builder</b> · voice AI in Indian languages<br>Woodstock School, Mussoorie · Class of 2027</div>
     <p class="hero-lede" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
   </div>
   <div class="cta"><b>Scroll to solve</b>4 sections · 19 moves</div>
@@ -329,7 +402,7 @@ section{position:relative;pointer-events:none}
       <dl class="spec">
         <dt>From</dt><dd>San Francisco · Gurgaon</dd>
         <dt>Speaks</dt><dd>English, Hindi, Spanish, Indonesian</dd>
-        <dt>Interests</dt><dd>Speedcubing · basketball (6′4″) · drums</dd>
+        <dt>Interests</dt><dd>Speedcubing · basketball · drums</dd>
       </dl>
     </div>
   </div>
@@ -347,17 +420,39 @@ section{position:relative;pointer-events:none}
         <span class="when">2025 – now</span>
       </div>
       <p class="one">Lab reports explained by phone call, WhatsApp or web, in 5 Indian languages and Hinglish.</p>
-      <figure class="shot tall"><img width="1230" height="1500" src="img/meditrack-call-whatsapp.webp" alt="MediTrack on a phone call and on WhatsApp, explaining a blood report in Hindi" loading="lazy"></figure>
+      <figure class="sim mt-sim" id="mtSim" role="img" aria-label="Simulated demo: MediTrack explaining a blood report in Hindi, on a phone call and on WhatsApp">
+        <span class="sim-tag">Simulated demo</span>
+        <div class="phone mt-call" aria-hidden="true">
+          <div class="island"></div>
+          <div class="mt-av">M</div>
+          <div class="nm">MediTrack</div>
+          <div class="tm" id="mtTime">02:14</div>
+          <div class="mt-wave"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i></div>
+          <div class="mt-caps">
+            <div class="mt-cap mt" id="mtCapA"><small>MEDITRACK</small><span>नमस्ते जी! आपकी 18 अक्टूबर की report मेरे सामने है।</span></div>
+            <div class="mt-cap you" id="mtCapB"><small>YOU</small><span>मेरा sugar ठीक है?</span></div>
+          </div>
+          <div class="mt-ctrl"><i></i><i class="end"></i><i></i></div>
+        </div>
+        <div class="phone mt-wa" aria-hidden="true">
+          <div class="island"></div>
+          <div class="hd"><div class="mt-av">M</div><div><b>MediTrack</b><small id="waStatus">online</small></div></div>
+          <div class="mt-body" id="waBody"></div>
+          <div class="in"><span>Message</span><i></i></div>
+        </div>
+      </figure>
       <div class="stats">
         <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>People with a report explained</span></div>
         <div class="stat"><b data-count="3">3</b><span>Hospitals using it</span></div>
-        <div class="stat"><b data-count="35" data-prefix="+" data-suffix="%">+35%</b><span>Understanding</span></div>
+        <div class="stat"><b data-count="6">6</b><span>Languages, incl. Hinglish</span></div>
       </div>
       <dl class="spec">
         <dt>Built</dt>
         <dd data-draft>Reads any Indian lab report, flags what’s off, says when to see a doctor.</dd>
         <dt>Hard part</dt>
         <dd data-draft>Explaining without diagnosing, for people who mix Hindi and English.</dd>
+        <dt hidden>Learned</dt>
+        <dd hidden class="learned" id="learned-meditrack"></dd>
         <dt>Results</dt>
         <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by Uttar Pradesh’s Directorate of Training.</dd>
       </dl>
@@ -375,12 +470,14 @@ section{position:relative;pointer-events:none}
         <span class="when">2025 – now</span>
       </div>
       <p class="one">An AI judge that’s allowed to say “it depends”.</p>
-      <figure class="shot"><img width="1400" height="1138" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
+      <figure class="shot"><img width="1200" height="654" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
       <dl class="spec">
         <dt>Built</dt>
         <dd>A 5-stage pipeline on Stanford’s Co-STORM. Fixed rules, not a model, pick the verdict.</dd>
         <dt>Hard part</dt>
         <dd data-draft>My tests lied: 93.8% on test cases, 71.9% on real ones.</dd>
+        <dt hidden>Learned</dt>
+        <dd hidden class="learned" id="learned-thisvsthat"></dd>
       </dl>
       <div class="links">
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
@@ -395,14 +492,29 @@ section{position:relative;pointer-events:none}
         <span class="when">Summer 2026</span>
       </div>
       <p class="one">Voice AI for Indian languages. I shipped two agents.</p>
-      <figure class="shot"><img width="1400" height="811" src="img/shunyalabs-whatsapp.webp" alt="The WhatsApp integration page in ShunyaLabs’ Voice Agent Platform" loading="lazy"></figure>
+      <figure class="sim sl-sim" id="slSim" role="img" aria-label="Simulated demo: connecting a WhatsApp Business account in ShunyaLabs’ Voice Agent Platform">
+        <span class="sim-tag">Simulated demo</span>
+        <div class="sl-stage" aria-hidden="true">
+          <img width="1400" height="811" src="img/shunyalabs-whatsapp.webp" alt="" loading="lazy">
+          <div class="sl-badge">● Connected</div>
+          <div class="sl-fill" style="top:22.25%"></div>
+          <div class="sl-fill" style="top:30.85%"></div>
+          <div class="sl-check"></div>
+          <div class="sl-fill" style="top:44.25%"></div>
+          <div class="sl-save">Save</div>
+          <div class="sl-ripple"></div>
+          <div class="sl-cursor"><svg viewBox="0 0 24 34"><path d="M2 2v26l7-6 5 10 4-2-5-10h9z" fill="#111" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        </div>
+      </figure>
       <dl class="spec">
         <dt>WhatsApp</dt>
         <dd>Voice agents send links and QR codes mid-call. Live in beta.</dd>
         <dt>Voice-to-cart</dt>
-        <dd data-draft>Talk to any website to fill your cart. <b>+9% checkout conversion.</b></dd>
+        <dd data-draft>Talk to any website to fill your cart. <b>+9% checkout conversion</b> vs. the regular checkout, over 3 weeks.</dd>
         <dt>Benchmarks</dt>
         <dd>Voice models on cost, latency and accuracy.</dd>
+        <dt hidden>Learned</dt>
+        <dd hidden class="learned" id="learned-shunyalabs"></dd>
       </dl>
       <div class="links"><a class="btn" href="https://agents.shunyalabs.ai" target="_blank" rel="noopener">agents.shunyalabs.ai ↗</a></div>
     </article>
@@ -416,8 +528,7 @@ section{position:relative;pointer-events:none}
       <p class="one">Big tech and policy reports, unpacked.</p>
       <div class="stats">
         <div class="stat"><b data-count="14">14</b><span>Episodes</span></div>
-        <div class="stat"><b data-count="170" data-suffix="+">170+</b><span>Plays</span></div>
-        <div class="stat"><b data-count="1150">1,150</b><span>Minutes heard</span></div>
+        <div class="stat"><b data-count="1150">1,150</b><span>Minutes listened</span></div>
       </div>
       <div class="links"><a class="btn" href="https://open.spotify.com/show/4h3vcAcZCLhsIMFEjN5hkq" target="_blank" rel="noopener">Listen on Spotify ↗</a></div>
     </article>
@@ -449,14 +560,16 @@ section{position:relative;pointer-events:none}
         <div><h3>AI voice explanations for medical reports</h3><div class="role">Author · Oxford Journal of Student Scholarship</div></div>
         <span class="when">Oct 2026</span>
       </div>
-      <p class="one">Would people rather hear their lab reports explained, in their own language?</p>
+      <p class="one">The field study behind MediTrack: would people rather hear their lab reports explained, in their own language?</p>
       <dl class="spec">
         <dt>Method</dt>
-        <dd>Survey of 103 adults and 9 interviews, Muzaffarnagar.</dd>
+        <dd>Survey of 103 adults and 9 interviews in Muzaffarnagar, before MediTrack launched.</dd>
         <dt>Findings</dt>
         <dd><b>99 of 103</b> prefer voice. <b>81.6%</b> struggle with report language.</dd>
         <dt>Results</dt>
         <dd>Published in OJSS. Accepted to ICARSS, Oxford.</dd>
+        <dt hidden>Learned</dt>
+        <dd hidden class="learned" id="learned-research"></dd>
       </dl>
       <div class="links"><a class="btn" href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener">Read the paper ↗</a></div>
     </article>
@@ -496,15 +609,6 @@ section{position:relative;pointer-events:none}
     <div class="sec-head rv"><span class="n">04</span><h2>Outside of building</h2></div>
 
     <div class="glass rv">
-      <p class="sub">Academics</p>
-      <ul class="cv">
-        <li><span class="when">2025 – 27</span><div><b>IB Diploma, predicted 45/45</b><span class="org">HL Math, Physics, CS · SAT 1560</span></div></li>
-        <li><span class="when">2025</span><div><b>College courses</b><span class="org">Stanford Number Theory (A) · <a href="https://cs50.harvard.edu/certificates/bdd22913-65d3-4f85-a9f9-ad5e7167e8b0" target="_blank" rel="noopener">Harvard CS50x</a> (98%)</span></div></li>
-        <li><span class="when">2025</span><div><b>School awards</b><span class="org">AMC 12 #2 in school · Top PSAT · Top MYP (52/56)</span></div></li>
-      </ul>
-    </div>
-
-    <div class="glass rv">
       <div class="gallery" style="--cols:4">
         <figure><img width="900" height="1200" src="img/gaumukh-glacier.webp" alt="The group at Gaumukh glacier" style="object-position:50% 62%" loading="lazy"><figcaption>Gaumukh</figcaption></figure>
         <figure><img width="900" height="668" src="img/cycling.webp" alt="The cycling group with the Himalayas behind" loading="lazy"><figcaption>Cycling</figcaption></figure>
@@ -512,6 +616,7 @@ section{position:relative;pointer-events:none}
         <figure><img width="900" height="1538" src="img/drums.webp" alt="Kabir playing drums on stage" style="object-position:50% 42%" loading="lazy"><figcaption>School band</figcaption></figure>
       </div>
       <ul class="cv">
+        <li><span class="when">Academics</span><div><b>IB Diploma, predicted 45/45 · SAT 1560</b><span class="org">Stanford Number Theory (A) · <a href="https://cs50.harvard.edu/certificates/bdd22913-65d3-4f85-a9f9-ad5e7167e8b0" target="_blank" rel="noopener">Harvard CS50x</a> (98%)</span></div></li>
         <li><span class="when">2026</span><div><b>Ladakh cycling expedition</b><span class="org">Week-long · up to 60 km/day uphill</span></div></li>
         <li><span class="when">2024 – 25</span><div><b>Gaumukh glacier &amp; Surya Top treks</b><span class="org">Hardest option both years</span></div></li>
         <li><span class="when">2024 – 26</span><div><b>School Yearbook</b><span class="org">Editor-in-Chief · 3 editions · ~$20k raised</span></div></li>
@@ -544,6 +649,133 @@ section{position:relative;pointer-events:none}
 </main>
 
 <noscript><style>.rv{opacity:1;transform:none}.split .ch{transform:none}</style></noscript>
+<script>
+// Simulated demos: each plays a timeline on loop while it is on screen.
+(function () {
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function demo(el, period, build) {
+    if (!el) return;
+    var timers = [], running = false, api = build(el);
+    function at(t, fn) { timers.push(setTimeout(fn, t)); }
+    function play() {
+      api.reset();
+      api.steps(at);
+      at(period, play);
+    }
+    if (still) { api.reset(); api.final(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; play(); }
+        if (!e.isIntersecting && running) { running = false; timers.forEach(clearTimeout); timers = []; }
+      });
+    }, { threshold: .25 }).observe(el);
+  }
+
+  // ---- MediTrack ----
+  demo(document.getElementById('mtSim'), 15000, function (el) {
+    var body = el.querySelector('#waBody'), status = el.querySelector('#waStatus'), time = el.querySelector('#mtTime');
+    var capA = el.querySelector('#mtCapA span'), capB = el.querySelector('#mtCapB span');
+    var A = el.querySelector('#mtCapA'), B = el.querySelector('#mtCapB'), secs = 134, clock;
+    var call = [
+      ['नमस्ते जी! आपकी 18 अक्टूबर की report मेरे सामने है।', 'मेरा sugar ठीक है?'],
+      ['हाँ, आपका sugar normal range में है।', 'और hemoglobin?'],
+      ['थोड़ा कम है। डॉक्टर से एक बार ज़रूर पूछिए।', 'ठीक है, धन्यवाद!']
+    ];
+    function add(html, cls) {
+      var d = document.createElement('div'); d.className = 'msg ' + (cls || ''); d.innerHTML = html; body.appendChild(d); return d;
+    }
+    function typing(on) {
+      var t = body.querySelector('.typing'); if (t) t.remove();
+      status.textContent = on ? 'typing…' : 'online';
+      if (on) { var d = document.createElement('div'); d.className = 'typing'; d.innerHTML = '<i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i>'; body.appendChild(d); }
+    }
+    function caps(i) {
+      A.classList.add('off'); B.classList.add('off');
+      setTimeout(function () { capA.textContent = call[i][0]; capB.textContent = call[i][1]; A.classList.remove('off'); }, 400);
+      setTimeout(function () { B.classList.remove('off'); }, 1600);
+    }
+    var bars = ''; for (var i = 0; i < 26; i++) bars += '<i style="--h:' + (25 + Math.round(70 * Math.abs(Math.sin(i * 1.7)))) + '%"></i>';
+    var msgs = {
+      pdf: '<div class="pdf"><i>PDF</i><span>blood_report.pdf</span></div><time>9:41 ✓✓</time>',
+      a1: 'आपका <b>hemoglobin</b> थोड़ा कम है। बाकी values normal हैं। 👍<time>9:41</time>',
+      vn: '<div class="vn"><span class="play"></span><span class="bars">' + bars + '</span><small>0:24</small></div><time>9:41</time>',
+      q: 'कम क्यों होता है?<time>9:42 ✓✓</time>',
+      a2: 'अक्सर iron की कमी से। पालक और दालें मदद करती हैं। एक बार डॉक्टर से ज़रूर पूछिए।<time>9:42</time>'
+    };
+    return {
+      reset: function () {
+        body.innerHTML = ''; typing(false); clearInterval(clock); secs = 134;
+        clock = setInterval(function () { secs++; time.textContent = ('0' + Math.floor(secs / 60)).slice(-2) + ':' + ('0' + secs % 60).slice(-2); }, 1000);
+      },
+      steps: function (at) {
+        caps(0);
+        at(500, function () { add(msgs.pdf, 'out'); });
+        at(1400, function () { typing(true); });
+        at(2700, function () { typing(false); add(msgs.a1); });
+        at(3600, function () {
+          var v = add(msgs.vn), b = v.querySelectorAll('.bars i'), k = 0;
+          var t = setInterval(function () { if (k < b.length) b[k++].classList.add('on'); else clearInterval(t); }, 110);
+        });
+        at(5000, function () { caps(1); });
+        at(7000, function () { add(msgs.q, 'out'); });
+        at(7900, function () { typing(true); });
+        at(9400, function () { typing(false); add(msgs.a2); });
+        at(10000, function () { caps(2); });
+      },
+      final: function () {
+        clearInterval(clock); add(msgs.pdf, 'out'); add(msgs.a1); add(msgs.vn); add(msgs.q, 'out'); add(msgs.a2);
+        body.querySelectorAll('.bars i').forEach(function (i) { i.classList.add('on'); });
+      }
+    };
+  });
+
+  // ---- ShunyaLabs ----
+  demo(document.getElementById('slSim'), 14000, function (el) {
+    var stage = el.querySelector('.sl-stage'), cur = el.querySelector('.sl-cursor'), rip = el.querySelector('.sl-ripple');
+    var f = el.querySelectorAll('.sl-fill'), chk = el.querySelector('.sl-check'), save = el.querySelector('.sl-save'), badge = el.querySelector('.sl-badge');
+    var vals = ['104729384756201', '238475610928374', '••••••••••••••••••••'];
+    function move(x, y) { cur.style.left = x + '%'; cur.style.top = y + '%'; }
+    function click(x, y) { rip.style.left = x + '%'; rip.style.top = y + '%'; rip.classList.remove('go'); void rip.offsetWidth; rip.classList.add('go'); }
+    function type(at, t0, i) {
+      at(t0, function () { f[i].classList.add('on', 'focus'); f[i].innerHTML = '<span class="caret"></span>'; });
+      for (var k = 1; k <= vals[i].length; k++) (function (k) {
+        at(t0 + 60 * k, function () { f[i].innerHTML = vals[i].slice(0, k) + '<span class="caret"></span>'; });
+      })(k);
+      at(t0 + 60 * vals[i].length + 250, function () { f[i].classList.remove('focus'); f[i].textContent = vals[i]; });
+    }
+    function zoom(on) { stage.style.transformOrigin = '20% 34%'; stage.style.transform = on ? 'scale(2.1)' : 'none'; }
+    return {
+      reset: function () {
+        zoom(false); move(60, 80);
+        f.forEach(function (x) { x.className = 'sl-fill'; x.textContent = ''; });
+        chk.classList.remove('on'); save.classList.remove('on'); badge.classList.remove('on');
+      },
+      steps: function (at) {
+        at(300, function () { move(6.5, 52.5); });
+        at(1200, function () { click(7.2, 53.1); });
+        at(1700, function () { zoom(true); move(28, 23.5); });
+        at(2800, function () { click(28, 24.2); });
+        type(at, 2900, 0);
+        at(4200, function () { move(28, 32.2); });
+        at(4900, function () { click(28, 32.9); });
+        type(at, 5000, 1);
+        at(6300, function () { move(19.2, 37.4); });
+        at(6900, function () { click(19.5, 38); chk.classList.add('on'); });
+        at(7200, function () { move(28, 45.6); });
+        at(7800, function () { click(28, 46.3); });
+        type(at, 7900, 2);
+        at(9300, function () { move(20.8, 52); });
+        at(9900, function () { click(21.3, 52.7); save.classList.add('on'); });
+        at(10400, function () { zoom(false); badge.classList.add('on'); move(70, 30); });
+      },
+      final: function () {
+        f.forEach(function (x, i) { x.classList.add('on'); x.textContent = vals[i]; });
+        chk.classList.add('on'); save.classList.add('on'); badge.classList.add('on'); cur.style.display = 'none';
+      }
+    };
+  });
+})();
+</script>
 <script>
   // If the 3D cube script fails to load, never leave the content hidden.
   setTimeout(function () {
@@ -617,7 +849,7 @@ const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 document.querySelectorAll('.contrib').forEach(g => {
   for (let i = 0; i < +g.dataset.n; i++) {
     const c = document.createElement('i');
-    c.style.setProperty('--a', (25 + Math.floor(rand() * 4) * 25) + '%');
+    c.style.setProperty('--g', ['#0e4429', '#006d32', '#26a641', '#39d353'][Math.floor(rand() * 4)]);
     c.style.setProperty('--d', (i * 2.2) + 'ms');
     g.append(c);
   }

@@ -9,7 +9,6 @@ What's on it: MediTrack, This vs That, my ShunyaLabs internship, my two research
 - `index.html`: the whole site
 - `img/`: photos and screenshots
 - `papers/`: the This vs That paper (PDF)
-- `og-image.jpg`: the preview image shown when the link is shared
 
 No build step. The cube uses Three.js, loaded from a CDN.
 
