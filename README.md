@@ -2,12 +2,13 @@
 
 My portfolio site. Scroll down and a Rubik's cube solves itself, one face per section, in 19 moves. 12 seconds is my real PB.
 
-What's on it: MediTrack, This vs That, my ShunyaLabs internship, my research paper, and what I do outside of building.
+What's on it: MediTrack, This vs That, my ShunyaLabs internship, my two research papers, and what I do outside of building.
 
 ## Files
 
 - `index.html`: the whole site
 - `img/`: photos and screenshots
+- `papers/`: the This vs That paper (PDF)
 
 No build step. The cube uses Three.js, loaded from a CDN.
 

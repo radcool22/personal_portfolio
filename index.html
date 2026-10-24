@@ -59,7 +59,6 @@ p{margin:0}
   padding:10px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);transition:background .3s}
 .skip:hover{background:rgba(255,255,255,.14)}
 .skip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.updated{margin-top:6px;font:500 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:600 14px/1 var(--sans);letter-spacing:-.01em}
 .logo{display:grid;grid-template-columns:repeat(3,6px);gap:2px}
 .logo i{width:6px;height:6px;border-radius:1.5px;background:var(--c)}
@@ -137,7 +136,6 @@ section{position:relative;pointer-events:none}
 .cv .org{display:block;font:500 10.5px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin-top:4px}
 .cv p{color:var(--body);margin-top:6px}
 .cv p.also{margin-top:0;line-height:1.75}
-.todo{color:var(--mute)!important;font-style:italic}
 .sub{font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 
 .links{display:flex;flex-wrap:wrap;gap:var(--s1)}
@@ -280,7 +278,7 @@ section{position:relative;pointer-events:none}
     <button data-go="2" style="grid-area:2/3;--c:var(--R)"><span>02 · Projects</span></button>
     <button data-go="3" style="grid-area:1/2;--c:var(--W)"><span>03 · Research</span></button>
     <button data-go="4" style="grid-area:2/4;--c:var(--B)"><span>04 · Outside of building</span></button>
-    <button data-go="5" style="grid-area:2/1;--c:var(--O)"><span>05 · At the Academy</span></button>
+    <i class="pad" style="grid-area:2/1;--c:var(--O)" aria-hidden="true"></i>
     <i class="pad" style="grid-area:3/2;--c:var(--Y)" aria-hidden="true"></i>
   </nav>
 </header>
@@ -299,10 +297,10 @@ section{position:relative;pointer-events:none}
 <!-- ============ HERO ============ -->
 <section class="hero" data-stop="0">
   <div class="col">
-    <div class="hero-meta"><b>Builder</b> · Woodstock School<br>Mussoorie, India · Class of 2027<br>Last updated 24 Oct 2026</div>
+    <div class="hero-meta"><b>Builder</b> · Woodstock School<br>Mussoorie, India · Class of 2027</div>
     <p class="hero-lede split" data-draft>I build tools that explain things to people who usually get left out of the explanation.</p>
   </div>
-  <div class="cta"><b>Scroll to solve</b>5 sections · 19 moves</div>
+  <div class="cta"><b>Scroll to solve</b>4 sections · 19 moves</div>
   <h1 class="wordmark split" id="wordmark">Kabir Gupta</h1>
 </section>
 
@@ -372,7 +370,7 @@ section{position:relative;pointer-events:none}
         <dt>Hard part</dt>
         <dd data-draft>My own tests were wrong. The conflict classifier scored 93.8% on hand-written cases but 71.9% on real claim pairs, and a filter I was sure about saved no work while throwing away a quarter of the real conflicts. I deleted it.</dd>
         <dt>Results</dt>
-        <dd>In a pre-registered test, a plain language model flipped its answer on 2 of 10 comparisons when the two options were swapped; This vs That can’t, by design. Written up in a 15-page paper. Open source (MIT).</dd>
+        <dd>Live at thisvsthat.live and open source (MIT). Written up as a paper; see Research.</dd>
       </dl>
       <div class="links">
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
@@ -457,6 +455,26 @@ section{position:relative;pointer-events:none}
       <div class="links"><a class="btn" href="https://www.oxfordjss.org/oct-2026-vol-12-issue-1/perceptions-of-ai-assisted-voice-explanations-for-medical-diagnostic-reports-in-multilingual-india" target="_blank" rel="noopener">Read the paper ↗</a></div>
     </article>
 
+    <article class="glass rv">
+      <div class="head">
+        <div><h3>This vs That: a comparison system that is allowed to say “it depends”</h3><div class="role">Author · design paper</div></div>
+        <span class="when">2026</span>
+      </div>
+      <p class="one">Language models always pick a winner, even when the honest answer is “it depends”. The paper describes how This vs That avoids that, and what measuring it showed.</p>
+      <dl class="spec">
+        <dt>Method</dt>
+        <dd>A pre-registered comparison against a plain language model on 10 comparisons chosen in advance, each asked twice with the options swapped. Plus measurements of the pipeline itself.</dd>
+        <dt>Findings</dt>
+        <dd>The plain model flipped its answer on 2 of 10 when the order changed; This vs That can’t, by design. But on the one comparison with a clear winner, mine hedged and the baseline got it right. Checking every claim pair (3,141 checks instead of 360) changed no verdict.</dd>
+        <dt>Results</dt>
+        <dd>Four corrections to my own system, three of them mistakes I only found by measuring. The paper reports all of them, including the ones that went against me.</dd>
+      </dl>
+      <div class="links">
+        <a class="btn" href="papers/this-vs-that.pdf" target="_blank" rel="noopener">Read the paper ↗</a>
+        <a class="btn" href="https://github.com/radcool22/this-vs-that" target="_blank" rel="noopener">Code ↗</a>
+      </div>
+    </article>
+
     <div class="glass rv">
       <ul class="cv">
         <li>
@@ -496,35 +514,14 @@ section{position:relative;pointer-events:none}
         <li><span class="when">2024 – 26</span><div><b>School Yearbook</b><span class="org">Editor-in-chief &amp; designer</span>
           <p>Led a 25-person team across 3 editions and 700+ pages. Raised ~$20,000 through sponsors and sales.</p></div></li>
         <li><span class="when">2025 – now</span><div><b>AI Club &amp; Physics Club</b><span class="org">Founder · first at the school</span></div></li>
-        <li><span class="when">Also</span><div><p class="also">National Honor Society president<br>Centre for Imagination Café head intern<br>Math department vice-head intern<br>Spanish Language Ambassador<br>Senior varsity basketball, starting center</p></div></li>
+        <li><span class="when">Also</span><div><p class="also">National Honor Society President<br>Centre for Imagination Café Head Intern<br>Math Department Vice-Head Intern<br>Spanish Language Ambassador<br>Senior Varsity Basketball, Starting Center</p></div></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ 05 · AT THE ACADEMY · orange ============ -->
-<section class="face" id="academy" data-stop="5" style="--c:var(--O)">
-  <div class="col">
-    <div class="sec-head rv"><span class="n">05</span><h2>At the Academy</h2></div>
-
-    <div class="glass rv">
-      <p class="one todo" data-draft>TODO: One sentence on what you want to build in San Francisco.</p>
-      <dl class="spec">
-        <dt>The pursuit</dt>
-        <dd class="todo" data-draft>TODO: The problem you’d chase for the year, and who it’s for.</dd>
-        <dt>Why now</dt>
-        <dd class="todo" data-draft>TODO: Why this is the right moment, and what you’ve already learned from MediTrack, This vs That or ShunyaLabs that sets it up.</dd>
-        <dt>Why here</dt>
-        <dd class="todo" data-draft>TODO: Why the Academy and San Francisco, not doing it from home.</dd>
-        <dt>First steps</dt>
-        <dd class="todo" data-draft>TODO: What you’d do in the first few months.</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
 <!-- ============ SOLVED ============ -->
-<section class="outro" id="solved" data-stop="6">
+<section class="outro" id="solved" data-stop="5">
   <div class="col rv">
     <span class="sub">19 moves · 12.00 s · my PB</span>
     <h2 class="split">Solved.</h2>
@@ -539,7 +536,6 @@ section{position:relative;pointer-events:none}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
       Scramble it again
     </button>
-    <p class="updated">Last updated 24 Oct 2026</p>
   </div>
 </section>
 
@@ -871,8 +867,8 @@ if (renderer) {
   const mvBox = document.getElementById('mv');
   const mvEls = SOLVE.map(m => { const s = document.createElement('span'); s.textContent = m.name; mvBox.append(s); return s; });
   const where = document.getElementById('where');
-  const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', '05 · At the Academy', 'Solved'];
-  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#2F6BFF', '#FF8A00', '#f4f1ea'];
+  const names = ['Scrambled', '01 · About me', '02 · Projects', '03 · Research', '04 · Outside of building', 'Solved'];
+  const accents = ['#f4f1ea', '#19C37D', '#FF3B30', '#F4F1EA', '#2F6BFF', '#f4f1ea'];
   const netBtns = [...document.querySelectorAll('.net button')];
   let lastStop = -1, lastTxt = '', lastK = -2;
 
