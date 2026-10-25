@@ -127,6 +127,11 @@ section{position:relative;pointer-events:none}
 .spec dt{font:500 10.5px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--c);padding-top:calc(var(--s2) + 3px)}
 .spec dd{margin:0;color:var(--body)}
 .spec dd b{color:var(--ink);font-weight:600}
+.spec dd a{color:var(--ink);text-underline-offset:3px}
+.awards{margin:0;padding:0;list-style:none}
+.awards li{padding-left:16px;position:relative}
+.awards li + li{margin-top:4px}
+.awards li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--c)}
 
 /* CV rows */
 .cv{list-style:none;margin:0;padding:0}
@@ -438,12 +443,12 @@ section{position:relative;pointer-events:none}
     <div class="glass rv">
       <div class="about">
         <figure class="ph"><img width="278" height="350" src="img/portrait.webp" alt="Portrait of Kabir Gupta" loading="lazy"></figure>
-        <p class="bio">I am a Senior at Woodstock School, studying in the Himalayas for the past 4 years. I like to build software focused on democratising AI, mainly connecting technology and humanity through language.</p>
+        <p class="bio">I’m a Senior at Woodstock School, a boarding school in the Himalayas, where I’ve studied for the past 4 years. I started coding with my dad when I was 10, during the COVID lockdown, and I haven’t stopped since. I like to build software focused on democratising AI, mainly connecting technology and humanity through language.</p>
       </div>
       <dl class="spec">
         <dt>From</dt><dd>Born in San Francisco · Live in Gurgaon</dd>
         <dt>Speaks</dt><dd>English, Hindi, Spanish, Indonesian</dd>
-        <dt>Interests</dt><dd>Speedcubing · basketball · drums</dd>
+        <dt>Interests</dt><dd>Speedcubing · Basketball · Drums · Hiking</dd>
       </dl>
     </div>
   </div>
@@ -491,7 +496,7 @@ section{position:relative;pointer-events:none}
         </div></div>
       </figure>
       <div class="stats">
-        <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>People with a report explained</span></div>
+        <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>Lab reports explained</span></div>
         <div class="stat"><b data-count="3">3</b><span>Hospitals using it</span></div>
         <div class="stat"><b data-count="6">6</b><span>Languages, incl. Hinglish</span></div>
       </div>
@@ -503,7 +508,11 @@ section{position:relative;pointer-events:none}
         <dt>Learned</dt>
         <dd>AI can never be democratised if it is not inclusive of language and the communities that dialogue exists in. Technology literacy is very low in India, which is why I embarked on a journey of making over 10 prototypes, the last being the most convenient for a typical Indian user.</dd>
         <dt>Awards</dt>
-        <dd><b>CREST Gold.</b> <b>Blue Ocean Top 500</b> of 23,000+. Recognised by India’s State Government.</dd>
+        <dd><ul class="awards">
+          <li><a href="https://www.crestawards.org/" target="_blank" rel="noopener">CREST Gold Award ↗</a></li>
+          <li><a href="https://www.blueoceancompetition.org/" target="_blank" rel="noopener">Blue Ocean Entrepreneurship Competition ↗</a>: Top 500 of 23,000+</li>
+          <li>Recognised by India’s State Government</li>
+        </ul></dd>
       </dl>
       <div class="gallery">
         <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
@@ -522,11 +531,11 @@ section{position:relative;pointer-events:none}
       <figure class="shot"><img width="1600" height="911" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
       <dl class="spec">
         <dt>Built</dt>
-        <dd>A 5-stage pipeline on top of Stanford’s Co-STORM model. It contains fixed rules to pick a verdict, and is not a standalone model.</dd>
+        <dd>A 5-stage pipeline on top of <a href="https://github.com/stanford-oval/storm" target="_blank" rel="noopener">Stanford’s Co-STORM</a> model. It contains fixed rules to pick a verdict, and is not a standalone model.</dd>
         <dt>Hard part</dt>
         <dd>My test cases and actual user inputs had a difference in accuracy rates. To fix this, I found a filter that was faulty which threw away a quarter of the conflicts, so I deleted it.</dd>
         <dt>Learned</dt>
-        <dd>AI lies, a lot. At least based on my personal experience.</dd>
+        <dd>In general, AI is great at facts but horrible with judgement. On complex real-world questions, it’s unable to match any perspective that a sentient human brings.</dd>
       </dl>
       <div class="links">
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
