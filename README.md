@@ -22,4 +22,4 @@ python3 -m http.server
 
 ## Deploy
 
-Hosted on Netlify from this repo. Build command: none. Publish directory: the repo root.
+Live at https://kabirgupta.me, hosted on Netlify from this repo. Build command: none. Publish directory: the repo root.
