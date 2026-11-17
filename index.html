@@ -473,7 +473,6 @@ section{position:relative;pointer-events:none}
         <dt>From</dt><dd>Born in San Francisco · Live in Gurgaon</dd>
         <dt>Speaks</dt><dd>English, Hindi, Spanish, Indonesian</dd>
         <dt>Interests</dt><dd>Speedcubing · Basketball · Drums · Hiking</dd>
-        <dt>Intro</dt><dd><a href="https://www.youtube.com/watch?v=5gZegeFoBvM" target="_blank" rel="noopener">Watch my video intro ↗</a></dd>
       </dl>
     </div>
   </div>
@@ -544,7 +543,7 @@ section{position:relative;pointer-events:none}
         <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
         <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
       </div>
-      <div class="links"><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a></div>
+      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a></div>
     </article>
 
     <!-- This vs That -->
@@ -725,8 +724,8 @@ section{position:relative;pointer-events:none}
         <a class="btn" href="https://x.com/kabirgupt4" target="_blank" rel="noopener">X</a>
         <a class="btn" href="https://www.linkedin.com/in/kabirgupta22/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://bit.ly/kabir-gupta-cv" target="_blank" rel="noopener">CV</a>
-        <a class="btn" href="https://www.youtube.com/watch?v=5gZegeFoBvM" target="_blank" rel="noopener">Video intro</a>
         <a class="btn" href="mailto:kabirgupta2201@gmail.com">Email</a>
+        <a class="btn" href="https://www.youtube.com/watch?v=5gZegeFoBvM" target="_blank" rel="noopener">Video intro</a>
       </div>
     </div>
   </div>
@@ -1119,15 +1118,15 @@ if (renderer) {
     mobile = innerWidth < 900;
     let hero, sec, out;
     if (mobile) {
-      hero = { x: .18 * visW, y: -.2 * visH, s: Math.min(.36, visW * .34 / 3) };
+      hero = { x: .22 * visW, y: -.22 * visH, s: Math.min(.28, visW * .27 / 3) };
       sec = { x: toX(innerWidth - 12 - 40), y: toY(innerHeight - 12 - 38), s: (58 / ppu) / EXT };
       out = { x: 0, y: .2 * visH, s: Math.min(.5, visW * .5 / 3) };
     } else {
       const col = document.querySelector('.face .col').getBoundingClientRect();
       const free = innerWidth - col.right;
-      hero = { x: .24 * visW, y: .06 * visH, s: Math.min(.7, visW * .36 / 3) };
-      sec = { x: toX(col.right + free / 2), y: 0, s: Math.min(.6, (free * .55 / ppu) / EXT, visH * .45 / EXT) };
-      out = { x: 0, y: .2 * visH, s: Math.min(.62, visH * .42 / EXT) };
+      hero = { x: .3 * visW, y: .1 * visH, s: Math.min(.46, visW * .24 / 3) };
+      sec = { x: toX(col.right + free / 2), y: 0, s: Math.min(.42, (free * .4 / ppu) / EXT, visH * .32 / EXT) };
+      out = { x: 0, y: .2 * visH, s: Math.min(.48, visH * .34 / EXT) };
     }
     L = [hero, ...Array(NS).fill(sec), out];
   }
