@@ -114,6 +114,8 @@ section{position:relative;pointer-events:none}
 .head h3{font:620 clamp(24px,2.2vw,30px)/1.1 var(--sans);letter-spacing:-.03em;margin:0}
 .head .role{font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-top:var(--s1)}
 .when{font:500 11px/1.4 var(--mono);color:var(--mute);white-space:nowrap;letter-spacing:.04em}
+.mt-gal{grid-auto-rows:clamp(220px,24vw,360px)}
+.mt-gal figure{grid-row:auto}
 .pbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5);align-items:start}
 .ptext{display:flex;flex-direction:column;gap:var(--s4);min-width:0}
 .pbody > figure{position:sticky;top:96px}
@@ -519,11 +521,6 @@ section{position:relative;pointer-events:none}
           <li>Recognised by India’s State Government</li>
         </ul></dd>
       </dl>
-      <div class="gallery">
-        <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
-        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
-      </div>
-      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a></div>
       </div>
       <figure class="sim mt-sim" id="mtSim" role="img" aria-label="Simulated demo: MediTrack explaining a blood report in Hindi on a phone call and over WhatsApp voice notes. Both channels are live.">
         <span class="sim-tag">Simulated demo · calls &amp; WhatsApp both live</span>
@@ -555,6 +552,11 @@ section{position:relative;pointer-events:none}
         </div></div>
       </figure>
       </div>
+      <div class="gallery mt-gal">
+        <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
+      </div>
+      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a></div>
     </article>
 
     <!-- This vs That -->
