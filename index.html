@@ -53,7 +53,7 @@ p{margin:0}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 1.2s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(1%,3%)}}
-#gl{position:fixed;inset:0;width:100%;height:100%;z-index:2;display:block;touch-action:pan-y}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:21;display:block;touch-action:pan-y;pointer-events:none}
 
 /* ---------- chrome ---------- */
 .top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);pointer-events:none}
@@ -75,16 +75,18 @@ p{margin:0}
 .net button:hover span{opacity:1}
 .net .pad{border-radius:3px;border:1.5px solid color-mix(in srgb,var(--c) 30%,transparent);opacity:.5}
 
-.hud{position:fixed;right:var(--gut);bottom:22px;z-index:20;pointer-events:none;font-family:var(--mono);display:flex;flex-direction:column;align-items:flex-end}
+.hud{position:fixed;right:22px;bottom:22px;z-index:20;pointer-events:none;font-family:var(--mono);display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+  min-height:92px;padding:14px 104px 14px 18px;border-radius:18px;background:rgba(12,12,15,.8);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--line);transition:background .4s,border-color .4s}
+body[data-stop="0"] .hud,body[data-stop="7"] .hud{background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
 .timer{display:flex;align-items:baseline;gap:14px;flex-direction:row-reverse}
 .timer #tm{font:500 30px/1 var(--mono);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .timer small{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .timer.done #tm{color:var(--acc);text-shadow:0 0 22px var(--acc)}
-.moves{display:flex;flex-wrap:nowrap;gap:4px;margin-top:10px}
+.moves{display:none;flex-wrap:nowrap;gap:4px;margin-top:10px}
 .moves span{font-size:11px;padding:3px 6px;border-radius:5px;border:1px solid var(--line);color:var(--dim);transition:all .25s}
 .moves span.done{color:var(--ink);border-color:rgba(255,255,255,.22)}
 .moves span.cur{background:var(--acc);color:#000;border-color:var(--acc)}
-.hint{font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;transition:opacity .6s;display:flex;gap:8px;align-items:center}
+.hint{display:none!important;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;transition:opacity .6s;display:flex;gap:8px;align-items:center}
 .hint svg{animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -95,7 +97,7 @@ section{position:relative;pointer-events:none}
 .face:first-of-type{padding-top:120px}
 /* room for the cube to move to centre after the last section has scrolled away */
 .face:has(+ .outro){padding-bottom:22vh}
-.col{position:relative;z-index:3;pointer-events:auto;width:min(660px,52vw);margin-left:var(--gut);display:flex;flex-direction:column;gap:var(--s4)}
+.col{position:relative;z-index:3;pointer-events:auto;width:min(1120px,calc(100vw - 2 * var(--gut)));margin-left:var(--gut);display:flex;flex-direction:column;gap:var(--s4)}
 
 /* section header, same everywhere */
 .sec-head{display:flex;align-items:center;gap:var(--s3);padding-bottom:var(--s3);border-bottom:1px solid var(--line);margin-bottom:var(--s1)}
@@ -112,6 +114,9 @@ section{position:relative;pointer-events:none}
 .head h3{font:620 clamp(24px,2.2vw,30px)/1.1 var(--sans);letter-spacing:-.03em;margin:0}
 .head .role{font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-top:var(--s1)}
 .when{font:500 11px/1.4 var(--mono);color:var(--mute);white-space:nowrap;letter-spacing:.04em}
+.pbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5);align-items:start}
+.ptext{display:flex;flex-direction:column;gap:var(--s4);min-width:0}
+.pbody > figure{position:sticky;top:96px}
 .tagline{font:650 clamp(22px,2vw,28px)/1.15 var(--sans);letter-spacing:-.03em;color:var(--ink);margin-bottom:calc(var(--s2) - var(--s4))}
 .one{font-size:18px;line-height:1.45;color:#e2ded6;letter-spacing:-.01em}
 
@@ -311,7 +316,7 @@ section{position:relative;pointer-events:none}
 .legend b{color:var(--ink);font-weight:500}
 
 /* contribution grid */
-.contrib{display:grid;grid-template-columns:repeat(35,1fr);gap:3px;margin-bottom:var(--s1)}
+.contrib{max-width:640px;display:grid;grid-template-columns:repeat(35,1fr);gap:3px;margin-bottom:var(--s1)}
 .contrib i{aspect-ratio:1;border-radius:2px;background:#161b22;transition:background .3s;transition-delay:var(--d)}
 .contrib.in i{background:var(--g)}
 
@@ -364,6 +369,8 @@ section{position:relative;pointer-events:none}
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
+  .pbody{grid-template-columns:1fr}
+  .pbody > figure{position:relative;top:auto;order:-1}
   .gallery[style*="--cols:3"],.gallery[style*="--cols:4"]{--cols:2}
   .gallery[style*="--cols:3"] figure:last-child{grid-column:1 / -1}
   .gallery figcaption{font-size:10px;padding:22px 10px 8px}
@@ -489,8 +496,35 @@ section{position:relative;pointer-events:none}
         <div><h3>MediTrack<span class="live">Live</span></h3><div class="role">Founder &amp; developer</div></div>
         <span class="when">2025 – now</span>
       </div>
+      <div class="pbody">
+      <div class="ptext">
       <p class="tagline">Personal healthcare assistant for a billion people.</p>
       <p class="one">A platform that explains lab reports via a phone call, WhatsApp, or the web. Live in 5 Indian languages and Hinglish (Hindi+English code-switched dialogue).</p>
+      <div class="stats">
+        <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>Lab reports explained</span></div>
+        <div class="stat"><b data-count="3">3</b><span>Hospitals using it</span></div>
+        <div class="stat"><b data-count="6">6</b><span>Languages, incl. Hinglish</span></div>
+      </div>
+      <dl class="spec">
+        <dt>Built</dt>
+        <dd>It reads any Indian lab report, flags what is off, and informs the user when to see a doctor without a diagnosis.</dd>
+        <dt>Hard part</dt>
+        <dd>How to build a product that makes it accessible and intuitive for the elderly and middle-class in India.</dd>
+        <dt>Learned</dt>
+        <dd>AI can never be democratised if it is not inclusive of language and the communities that dialogue exists in. Technology literacy is very low in India, which is why I embarked on a journey of making 3 prototypes, the last being the most convenient for a typical Indian user.</dd>
+        <dt>Awards</dt>
+        <dd><ul class="awards">
+          <li><a href="https://www.crestawards.org/" target="_blank" rel="noopener">CREST Gold Award ↗</a></li>
+          <li><a href="https://www.blueoceancompetition.org/" target="_blank" rel="noopener">Blue Ocean Entrepreneurship Competition ↗</a>: Top 500 Finalist of 23,000+</li>
+          <li>Recognised by India’s State Government</li>
+        </ul></dd>
+      </dl>
+      <div class="gallery">
+        <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
+        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
+      </div>
+      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a></div>
+      </div>
       <figure class="sim mt-sim" id="mtSim" role="img" aria-label="Simulated demo: MediTrack explaining a blood report in Hindi on a phone call and over WhatsApp voice notes. Both channels are live.">
         <span class="sim-tag">Simulated demo · calls &amp; WhatsApp both live</span>
         <div class="phone mt-call" aria-hidden="true"><div class="scr">
@@ -520,30 +554,7 @@ section{position:relative;pointer-events:none}
           <div class="wa-in"><div class="wa-fld"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-3.5-9A1.5 1.5 0 1 0 8.5 8a1.5 1.5 0 0 0 0 3zm7 0A1.5 1.5 0 1 0 15.5 8a1.5 1.5 0 0 0 0 3zM12 17.5c2.3 0 4.3-1.4 5.1-3.5H6.9c.8 2.1 2.8 3.5 5.1 3.5z"/></svg><span>Message</span><svg viewBox="0 0 24 24"><path d="M16.5 6v11.5a4 4 0 0 1-8 0V5a2.5 2.5 0 0 1 5 0v10.5a1 1 0 0 1-2 0V6H10v9.5a2.5 2.5 0 0 0 5 0V5a4 4 0 0 0-8 0v12.5a5.5 5.5 0 0 0 11 0V6h-1.5z"/></svg><svg viewBox="0 0 24 24"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zM9 2 7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9z"/></svg></div><div class="wa-mic"><svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5.3-3a5.3 5.3 0 0 1-10.6 0H5a7 7 0 0 0 6 6.72V21h2v-3.28A7 7 0 0 0 19 11h-1.7z"/></svg></div></div>
         </div></div>
       </figure>
-      <div class="stats">
-        <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>Lab reports explained</span></div>
-        <div class="stat"><b data-count="3">3</b><span>Hospitals using it</span></div>
-        <div class="stat"><b data-count="6">6</b><span>Languages, incl. Hinglish</span></div>
       </div>
-      <dl class="spec">
-        <dt>Built</dt>
-        <dd>It reads any Indian lab report, flags what is off, and informs the user when to see a doctor without a diagnosis.</dd>
-        <dt>Hard part</dt>
-        <dd>How to build a product that makes it accessible and intuitive for the elderly and middle-class in India.</dd>
-        <dt>Learned</dt>
-        <dd>AI can never be democratised if it is not inclusive of language and the communities that dialogue exists in. Technology literacy is very low in India, which is why I embarked on a journey of making 3 prototypes, the last being the most convenient for a typical Indian user.</dd>
-        <dt>Awards</dt>
-        <dd><ul class="awards">
-          <li><a href="https://www.crestawards.org/" target="_blank" rel="noopener">CREST Gold Award ↗</a></li>
-          <li><a href="https://www.blueoceancompetition.org/" target="_blank" rel="noopener">Blue Ocean Entrepreneurship Competition ↗</a>: Top 500 Finalist of 23,000+</li>
-          <li>Recognised by India’s State Government</li>
-        </ul></dd>
-      </dl>
-      <div class="gallery">
-        <figure class="t"><img width="900" height="1200" src="img/pilot-patients.webp" alt="Kabir walking two patients through their reports on his phone" style="object-position:62% 40%" loading="lazy"><figcaption>Walking two patients through their reports in rural India</figcaption></figure>
-        <figure class="t"><img width="900" height="1200" src="img/landour-hospital.webp" alt="Kabir outside Landour Community Hospital" style="object-position:35% 60%" loading="lazy"><figcaption>At a Himalayan community hospital</figcaption></figure>
-      </div>
-      <div class="links"><a class="btn" href="https://www.meditrack.in/" target="_blank" rel="noopener">meditrack.in ↗</a><a class="btn" href="https://wa.me/919717628400?text=Hi" target="_blank" rel="noopener">Try it on WhatsApp ↗</a></div>
     </article>
 
     <!-- This vs That -->
@@ -552,8 +563,9 @@ section{position:relative;pointer-events:none}
         <div><h3>This vs That<span class="live">Live</span></h3><div class="role">Creator &amp; developer</div></div>
         <span class="when">2025 – now</span>
       </div>
+      <div class="pbody">
+      <div class="ptext">
       <p class="one">An AI judge that’s allowed to say “it depends”.</p>
-      <figure class="shot"><img width="1600" height="911" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
       <dl class="spec">
         <dt>Built</dt>
         <dd>A 5-stage pipeline on top of <a href="https://github.com/stanford-oval/storm" target="_blank" rel="noopener">Stanford’s Co-STORM</a> model. It contains fixed rules to pick a verdict, and is not a standalone model.</dd>
@@ -566,6 +578,9 @@ section{position:relative;pointer-events:none}
         <a class="btn" href="https://thisvsthat.live/" target="_blank" rel="noopener">Try it live ↗</a>
         <a class="btn" href="https://github.com/radcool22/this-vs-that" target="_blank" rel="noopener">Code ↗</a>
       </div>
+      </div>
+      <figure class="shot"><img width="1600" height="911" src="img/thisvsthat-feed.webp" alt="This vs That showing comparisons with their verdicts and leans" loading="lazy"></figure>
+      </div>
     </article>
 
     <!-- ShunyaLabs -->
@@ -574,7 +589,21 @@ section{position:relative;pointer-events:none}
         <div><h3>ShunyaLabs<span class="live">Shipped</span></h3><div class="role">Tech Intern · mentored by the CEO</div></div>
         <span class="when">Summer 2026</span>
       </div>
+      <div class="pbody">
+      <div class="ptext">
       <p class="one">Worked on live Voice AI models for Indian languages. I shipped two integrated agents for them.</p>
+      <dl class="spec">
+        <dt>WhatsApp</dt>
+        <dd>Built a voice agent that sends links and QR codes mid-call. It is live in beta on their agentic platform.</dd>
+        <dt>Voice-to-cart</dt>
+        <dd>You can talk to any website to fill your cart up. Increased checkout conversion by <b>9%</b> versus regular checkout over just 3 weeks.</dd>
+        <dt>Benchmarks</dt>
+        <dd>Tested models on cost, latency, and accuracy.</dd>
+        <dt>Learned</dt>
+        <dd>Training, training, training. It’s how AI models get better. Real progress actually came from improving the model, not from making added features or integrations.</dd>
+      </dl>
+      <div class="links"><a class="btn" href="https://agents.shunyalabs.ai" target="_blank" rel="noopener">agents.shunyalabs.ai ↗</a></div>
+      </div>
       <figure class="sim sl-sim" id="slSim" role="img" aria-label="Simulated demo: connecting a WhatsApp Business account in ShunyaLabs’ Voice Agent Platform">
         <span class="sim-tag">Simulated demo · live in beta</span>
         <div class="sl-stage" aria-hidden="true">
@@ -589,17 +618,7 @@ section{position:relative;pointer-events:none}
           <div class="sl-cursor"><svg viewBox="0 0 24 34"><path d="M2 2v26l7-6 5 10 4-2-5-10h9z" fill="#111" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></div>
         </div>
       </figure>
-      <dl class="spec">
-        <dt>WhatsApp</dt>
-        <dd>Built a voice agent that sends links and QR codes mid-call. It is live in beta on their agentic platform.</dd>
-        <dt>Voice-to-cart</dt>
-        <dd>You can talk to any website to fill your cart up. Increased checkout conversion by <b>9%</b> versus regular checkout over just 3 weeks.</dd>
-        <dt>Benchmarks</dt>
-        <dd>Tested models on cost, latency, and accuracy.</dd>
-        <dt>Learned</dt>
-        <dd>Training, training, training. It’s how AI models get better. Real progress actually came from improving the model, not from making added features or integrations.</dd>
-      </dl>
-      <div class="links"><a class="btn" href="https://agents.shunyalabs.ai" target="_blank" rel="noopener">agents.shunyalabs.ai ↗</a></div>
+      </div>
     </article>
 
     <!-- Pocket Reports -->
@@ -1122,10 +1141,9 @@ if (renderer) {
       sec = { x: toX(innerWidth - 12 - 40), y: toY(innerHeight - 12 - 38), s: (58 / ppu) / EXT };
       out = { x: 0, y: .2 * visH, s: Math.min(.5, visW * .5 / 3) };
     } else {
-      const col = document.querySelector('.face .col').getBoundingClientRect();
-      const free = innerWidth - col.right;
+      const hud = document.querySelector('.hud').getBoundingClientRect();
       hero = { x: .3 * visW, y: .1 * visH, s: Math.min(.46, visW * .24 / 3) };
-      sec = { x: toX(col.right + free / 2), y: 0, s: Math.min(.42, (free * .4 / ppu) / EXT, visH * .32 / EXT) };
+      sec = { x: toX(hud.right - 46), y: toY(hud.top + hud.height / 2), s: (66 / ppu) / EXT };
       out = { x: 0, y: .2 * visH, s: Math.min(.48, visH * .34 / EXT) };
     }
     L = [hero, ...Array(NS).fill(sec), out];
